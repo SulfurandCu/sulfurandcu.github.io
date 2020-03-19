@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source Han Serif TC:300,300italic,400,400italic,700,700italic|EB Garamond:300,300italic,400,400italic,700,700italic|Iosevka Term Curly Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sulfurandcu.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="https:&#x2F;&#x2F;unicode-table.com&#x2F;  常用標點全形－全形連字符-負號U+00D7	&amp;amp;#215;		× ×	乘號U+2219	&amp;amp;#8729;		∙	點號運算符U+2217	&amp;amp;#8727;		∗	星號運算符U+00F7	&amp;amp;#247;		÷ ÷	除號U+002B	&amp;amp;#43;		+ +	正號U+00B1	&amp;amp;#177;		±	正負號U+221">
+<meta property="og:type" content="article">
+<meta property="og:title" content="排版、標點與字符編碼">
+<meta property="og:url" content="https:&#x2F;&#x2F;sulfurandcu.github.io&#x2F;punctuation-and-character-encoding.html">
+<meta property="og:site_name" content="ㄅㄆㄇㄈ">
+<meta property="og:description" content="https:&#x2F;&#x2F;unicode-table.com&#x2F;  常用標點全形－全形連字符-負號U+00D7	&amp;amp;#215;		× ×	乘號U+2219	&amp;amp;#8729;		∙	點號運算符U+2217	&amp;amp;#8727;		∗	星號運算符U+00F7	&amp;amp;#247;		÷ ÷	除號U+002B	&amp;amp;#43;		+ +	正號U+00B1	&amp;amp;#177;		±	正負號U+221">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-19T14:44:27.088Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://sulfurandcu.github.io/punctuation-and-character-encoding.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>排版、標點與字符編碼 | ㄅㄆㄇㄈ</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ㄅㄆㄇㄈ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">bopomofo</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>在下</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>類別</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-th"></i>標籤</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sulfurandcu.github.io/punctuation-and-character-encoding.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="硫及銅">
+      <meta itemprop="description" content="枸杞養生  亦能續命">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㄅㄆㄇㄈ">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          排版、標點與字符編碼
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-12-13 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-13T00:00:00+08:00">2019-12-13</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-03-19 22:44:27" itemprop="dateModified" datetime="2020-03-19T22:44:27+08:00">2020-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%84%A1%E4%B8%BB%E4%B9%8B%E5%9C%B0/" itemprop="url" rel="index"><span itemprop="name">無主之地</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <center><a href="https://unicode-table.com/" target="_blank" rel="noopener">https://unicode-table.com/</a></center>
+
+<h4 id="常用標點"><a href="#常用標點" class="headerlink" title="常用標點"></a>常用標點</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">全形－全形連字符-負號</span><br><span class="line"></span><br><span class="line">U+00D7	&amp;#215;		× ×	乘號</span><br><span class="line">U+2219	&amp;#8729;		∙	點號運算符</span><br><span class="line">U+2217	&amp;#8727;		∗	星號運算符</span><br><span class="line">U+00F7	&amp;#247;		÷ ÷	除號</span><br><span class="line">U+002B	&amp;#43;		+ +	正號</span><br><span class="line">U+00B1	&amp;#177;		±	正負號</span><br><span class="line">U+2213	&amp;#8723;		∓	負正號</span><br><span class="line">U+2212	&amp;#8722;		−	負號</span><br><span class="line"></span><br><span class="line">U+005F	&amp;#95;		_ _	下橫線</span><br><span class="line"></span><br><span class="line">U+002D	&amp;#45;		- -	連字符-負號</span><br><span class="line">U+2010	&amp;#8208;		‐	連字符</span><br><span class="line">U+2011	&amp;#8209;		‑	連字符（無間斷）</span><br><span class="line">U+2013	&amp;#8211;		–	半寬長劃／短橫線</span><br><span class="line">U+2014	&amp;#8212;		— —	全寬長劃／一字線</span><br><span class="line"></span><br><span class="line">U+00B7	&amp;#183;		· ·	中間點</span><br><span class="line">U+30FB	&amp;#12539;	・ ・	中間點（片假名）</span><br><span class="line">U+2027	&amp;#8231;		‧	連字點</span><br><span class="line">U+2022	&amp;#8226;		•	加重號</span><br><span class="line"></span><br><span class="line">U+200B	&amp;#8203;			零宽间隔​</span><br><span class="line">U+FEFF	&amp;#65279;	﻿	零宽間隔（無間斷）</span><br><span class="line">U+0020	&amp;#32;		 	空格</span><br><span class="line">U+00A0	&amp;#160;		 	空格（無間斷）</span><br><span class="line">U+2010	&amp;#8208;		‐	連字符</span><br><span class="line">U+2011	&amp;#8209;		‑	連字符（無間斷）</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h4 id="字符編碼-萬國碼"><a href="#字符編碼-萬國碼" class="headerlink" title="字符編碼 - 萬國碼"></a>字符編碼 - 萬國碼</h4><h5 id="控制字符-U-0000-U-001F"><a href="#控制字符-U-0000-U-001F" class="headerlink" title="控制字符 U+0000 - U+001F"></a>控制字符 U+0000 - U+001F</h5><h5 id="拉丁字母-U-0020-U-007F"><a href="#拉丁字母-U-0020-U-007F" class="headerlink" title="拉丁字母 U+0020 - U+007F"></a>拉丁字母 U+0020 - U+007F</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">U+0020	&amp;#32;		   	Space				空格</span><br><span class="line">U+0021	&amp;#33;		! !	Exclamation Mark		歎號			全形！全形歎號			真	可！易	常用</span><br><span class="line">U+0022	&amp;#34;		&quot; &quot;	Quotation Mark			引號／雙直引號		全形＂全形引號			真	可＂難</span><br><span class="line">U+0023	&amp;#35;		# #	Number Sign			數字標記		全形＃全形數字標記		真	可＃難</span><br><span class="line">U+0024	&amp;#36;		$ $	Dollar Sign			美元標記		全形＄全形美元標記		真	可＄難</span><br><span class="line">U+00A2	&amp;#162;		¢ ¢	Cent Sign			分幣標記		全形￠全形分幣標記		假</span><br><span class="line">U+00A3	&amp;#163;		£ £	Pound Sign			英鎊標記		全形￡全形英鎊標記		假</span><br><span class="line">U+00A5	&amp;#165;		¥ ¥	Yen Sign			日元標記		全形￥全形日元標記		假	可￥中</span><br><span class="line">U+00A4	&amp;#164;		¤ ¤	Currency Sign			貨幣標記		全形</span><br><span class="line">U+00A6	&amp;#166;		¦ ¦	Broken Bar			間斷條			全形￤全形間斷條		假</span><br><span class="line">U+00A7	&amp;#167;		§ §	Section Sign			節標記			全形</span><br><span class="line">U+0025	&amp;#37;		% %	Percent Sign			百分號			全形％全形百分號		真	可％中</span><br><span class="line">U+0026	&amp;#38;		&amp; &amp;	Ampersand			與號			全形＆全形與號			真	可＆難</span><br><span class="line">U+0027	&amp;#39;		&apos; &apos;	Apostrophe			撇號／單直引號		全形＇全形撇號			真	可＇難</span><br><span class="line">U+0028	&amp;#40;		( (	Left Parenthesis		左圓括號		全形（全形左圓括號		真	可（易	常用</span><br><span class="line">U+0029	&amp;#41;		) )	Right Parenthesis		右圓括號		全形）全形右圓括號		真	可）易	常用</span><br><span class="line">U+002A	&amp;#42;		* *	Asterisk			星號			全形＊全形星號			真	可＊中</span><br><span class="line">U+002B	&amp;#43;		+ +	Plus Sign			正號			全形＋全形正號			真	可＋難</span><br><span class="line">U+002C	&amp;#44;		, ,	Comma				逗號			全形，全形逗號			真	可，易	常用</span><br><span class="line">U+002D	&amp;#45;		- -	Hyphen-Minus			連字符-負號		全形－全形連字符-負號		真	可－難</span><br><span class="line">U+002E	&amp;#46;		. .	Full Stop			句號			全形．全形句號			真	可．難</span><br><span class="line">U+002F	&amp;#47;		/ /	Solidus				斜線號			全形／全形斜線號		真	可／中</span><br><span class="line">U+003A	&amp;#58;		: :	Colon				冒號			全形：全形冒號			真	可：易	常用</span><br><span class="line">U+003B	&amp;#59;		; ;	Semicolon			分號			全形；全形分號			真	可；易	常用</span><br><span class="line">U+003C	&amp;#60;		&lt; &lt;	Less-Than Sign			小於號			全形＜全形小於號		真	可＜難</span><br><span class="line">U+003D	&amp;#61;		= =	Equals Sign			等號			全形＝全形等號			真	可＝難</span><br><span class="line">U+003E	&amp;#62;		&gt; &gt;	Greater-Than Sign		大於號			全形＞全形大於號		真	可＞難</span><br><span class="line">U+003F	&amp;#63;		? ?	Question Mark			問號			全形？全形問號			真	可？易	常用</span><br><span class="line">U+0040	&amp;#64;		@ @	Commercial At			商用符號		全形＠全形商用符號		真	可＠難</span><br><span class="line">U+005B	&amp;#91;		[ [	Left Square Bracket		左方括號		全形［全形左方括號		真	可［中</span><br><span class="line">U+005C	&amp;#92;		\ \	Reverse Solidus			反斜線號		全形＼全形反斜線號		真	可＼中</span><br><span class="line">U+005D	&amp;#93;		] ]	Right Square Bracket		右方括號		全形］全形右方括號		真	可］中</span><br><span class="line">U+005E	&amp;#94;		^ ^	Circumflex Accent		揚抑符			全形＾全形揚抑符		真	可＾難</span><br><span class="line">U+005F	&amp;#95;		_ _	Low Line			下橫線			全形＿全形下橫線		真	可＿難</span><br><span class="line">U+0060	&amp;#96;		` `	Grave Accent			抑音符			全形｀全形抑音符		真	可｀難</span><br><span class="line">U+007B	&amp;#123;		&#123; &#123;	Left Curly Bracket		左花括號		全形｛全形左花括號		真	可｛中</span><br><span class="line">U+007C	&amp;#124;		| |	Vertical Line			豎線			全形｜全形豎線			真	可｜中</span><br><span class="line">U+007D	&amp;#125;		&#125; &#125;	Right Curly Bracket		右花括號		全形｝全形右花括號		真	可｝中</span><br><span class="line">U+007E	&amp;#126;		~ ~	Tilde				顎化符-波浪號		全形～全形顎化符		真	可～中</span><br><span class="line"></span><br><span class="line">U+00A0	&amp;#160;		 	No-Break Space			空格（無間斷）</span><br><span class="line">U+00AC	&amp;#172;		¬	Not Sign			非標記			全形￢全形非標記		假</span><br><span class="line">U+00B7	&amp;#183;		· ·	Middle Dot			中間點			日文・中間點（片假名）		替・	可・中</span><br><span class="line">U+00B9	&amp;#185;		¹	Superscript One			上標一</span><br><span class="line">U+00B2	&amp;#178;		²	Superscript Two			上標二</span><br><span class="line">U+00B3	&amp;#179;		³	Superscript Three		上標三</span><br><span class="line">U+00BC	&amp;#188;		¼	Vulgar Fraction One Quarter	四分之一</span><br><span class="line">U+00BD	&amp;#189;		½	Vulgar Fraction One Half	四分之二／二分之一</span><br><span class="line">U+00BE	&amp;#190;		¾	Vulgar Fraction Three Quarters	四分之三</span><br><span class="line">U+00B1	&amp;#177;		±	Plus minus symbol		正負號</span><br><span class="line">U+00D7	&amp;#215;		× ×	Multiplication Sign		乘號</span><br><span class="line">U+00F7	&amp;#247;		÷ ÷	Division Sign			除號</span><br><span class="line">U+00B0	&amp;#176;		° °	Degree Sign			度標記</span><br><span class="line">U+00B5	&amp;#181;		µ	Micro Sign			微單位標記</span><br><span class="line">U+00A9	&amp;#169;		© ©	Copyright Sign			版權標記</span><br><span class="line">U+00AE	&amp;#174;		®​ ®	Registered Sign			註冊標記</span><br><span class="line">U+02BC	&amp;#700;		ʼ	Modifier Letter Apostrophe	修飾字母撇號</span><br></pre></td></tr></table></figure>
+
+<h5 id="常用標點-1"><a href="#常用標點-1" class="headerlink" title="常用標點"></a>常用標點</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">U+200B	&amp;#8203;			Zero Width Space		零宽间隔​</span><br><span class="line">U+2027	&amp;#8231;		‧	Hyphenation Point		連字點</span><br><span class="line">U+2010	&amp;#8208;		‐	Hyphen				連字符</span><br><span class="line">U+2011	&amp;#8209;		‑	No-Break Hyphen			連字符（無間斷）</span><br><span class="line">U+2013	&amp;#8211;		–	En Dash				半寬長劃						替⸺</span><br><span class="line">U+2014	&amp;#8212;		— —	Em Dash				全寬長劃						替——	可—易	常用</span><br><span class="line">U+2026	&amp;#8230;		… …	Horizontal Ellipsis		水平省略號						替……	可…易	常用</span><br><span class="line">U+2018	&amp;#8216;		‘ ‘	Left Single Quotation Mark	左單引號</span><br><span class="line">U+2019	&amp;#8217;		’ ’	Right Single Quotation Mark	右單引號</span><br><span class="line">U+201C	&amp;#8220;		“ “	Left Double Quotation Mark	左雙引號</span><br><span class="line">U+201D	&amp;#8221;		” ”	Right Double Quotation Mark	右雙引號</span><br><span class="line">U+2030	&amp;#8240;		‰ ‰	Per Mille Sign			千分號</span><br><span class="line">U+2031	&amp;#8241;		‱ ‱	Per Ten Thousand Sign		萬分號</span><br><span class="line">U+2032	&amp;#8242;		′ ′	Prime				單上标符／角分符號</span><br><span class="line">U+2033	&amp;#8243;		″ ″	Double Prime			雙上标符／角秒符號</span><br><span class="line">U+2034	&amp;#8244;		‴ ‴	Triple Prime			三上标符</span><br><span class="line">U+2035	&amp;#8245;		‵ ‵	Reversed Prime			横翻單上标符</span><br><span class="line">U+2036	&amp;#8246;		‶ ‶	Reversed Double Prime		横翻雙上标符</span><br><span class="line">U+2037	&amp;#8247;		‷ ‷	Reversed Triple Prime		横翻三上标符</span><br></pre></td></tr></table></figure>
+
+<h5 id="中日韓符號標點「全形」"><a href="#中日韓符號標點「全形」" class="headerlink" title="中日韓符號標點「全形」"></a>中日韓符號標點「全形」</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">U+3000	&amp;#12288;	　 　	Ideographic Space		象形字間隔							可　難	常用</span><br><span class="line">U+3001	&amp;#12289;	、 、	Ideographic Comma		象形字逗號							可、中	常用</span><br><span class="line">U+3002	&amp;#12290;	。 。	Ideographic Full Stop		象形字句號							可。易	常用</span><br><span class="line">U+3008	&amp;#12296;	〈 〈	L Angle Bracket			左尖括號							可〈中</span><br><span class="line">U+3009	&amp;#12297;	〉 〉	R Angle Bracket			右尖括號							可〉中</span><br><span class="line">U+300A	&amp;#12298;	《 《	L Double Angle Bracket		左雙尖括號							可《中</span><br><span class="line">U+300B	&amp;#12299;	》 》	R Double Angle Bracket		右雙尖括號							可》中</span><br><span class="line">U+300C	&amp;#12300;	「 「	L Corner Bracket		左角括號							可「中	常用</span><br><span class="line">U+300D	&amp;#12301;	」 」	R Corner Bracket		右角括號							可」中	常用</span><br><span class="line">U+300E	&amp;#12302;	『 『	L White Corner Bracket		左空心角括號							可『中	常用</span><br><span class="line">U+300F	&amp;#12303;	』 』	R White Corner Bracket		右空心角括號							可』中	常用</span><br><span class="line">U+3010	&amp;#12304;	【 【	L Black Lenticular Bracket	左實心凹形括號							可【中</span><br><span class="line">U+3011	&amp;#12305;	】 】	R Black Lenticular Bracket	右實心凹形括號							可】中</span><br><span class="line">U+3016	&amp;#12310;	〖 〖	L White Lenticular Bracket	左空心凹形括號							可〖中</span><br><span class="line">U+3017	&amp;#12311;	〗 〗	R White Lenticular Bracket	右空心凹形括號							可〗中</span><br><span class="line">U+3014	&amp;#12308;	〔 〔	L Tortoise Shell Bracket	左龜殼形括號							可〔中</span><br><span class="line">U+3015	&amp;#12309;	〕 〕	R Tortoise Shell Bracket	右龜殼形括號							可〕中</span><br></pre></td></tr></table></figure>
+
+<h4 id="字符輸入"><a href="#字符輸入" class="headerlink" title="字符輸入"></a>字符輸入</h4><p>中州韻－小狼毫－繁中半角－SHIFT－1</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~	！	@	#	￥	%	……	&amp;	*	（	）	『	』</span><br><span class="line">～		©	№	$	％			＊			〖	〗</span><br><span class="line">˜		®		€	‰			·			｛	｝</span><br><span class="line">≈		℗		£	‱			・</span><br><span class="line">≋				¥	°			×</span><br><span class="line">≃				¢	℃			※</span><br><span class="line">≅				¤	℉			❂</span><br><span class="line">≇				₩</span><br><span class="line">∽</span><br></pre></td></tr></table></figure>
+
+<p>中州韻－小狼毫－繁中半角－1</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">`	1	2	3	4	5	6	7	8	9	0	「	」</span><br><span class="line">‵											【	】</span><br><span class="line">‶											〔	〕</span><br><span class="line">‷											［	］</span><br><span class="line">`</span><br><span class="line">″</span><br><span class="line">‴</span><br></pre></td></tr></table></figure>
+
+<p>中州韻－小狼毫－繁中半角－SHIFT－2</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">：	《	》	“”								？	+	·	——</span><br><span class="line">	〈	〉											・</span><br><span class="line">	«	»											|</span><br><span class="line">	‹	›											｜</span><br><span class="line">													§</span><br><span class="line">													¦</span><br><span class="line">													‖</span><br></pre></td></tr></table></figure>
+
+<p>中州韻－小狼毫－繁中半角－2</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">；	，	。	‘’								、	=	、	-</span><br><span class="line">											､	々</span><br><span class="line">											/	〃	\</span><br><span class="line">											／		＼</span><br><span class="line">											÷</span><br></pre></td></tr></table></figure>
+
+<p>中州韻－小狼毫－英文半角</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">~	!	@	#	$	%	^	&amp;	*	(	)	&#123;	&#125;</span><br><span class="line">`	1	2	3	4	5	6	7	8	9	0	[	]</span><br><span class="line"></span><br><span class="line">:	&lt;	&gt;	&quot;&quot;								?	+	|	_</span><br><span class="line">;	,	.	&apos;&apos;								/	=	\	-</span><br></pre></td></tr></table></figure>
+
+<p>中州韻－小狼毫－英文全角</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">		＠	＃	＄		＾	＆</span><br><span class="line">｀	１	２	３	４	５	６	７	８	９	０</span><br><span class="line"></span><br><span class="line">​	＜	＞	＂									＋		＿</span><br><span class="line">​		．	＇									＝		－</span><br></pre></td></tr></table></figure>
+
+<h4 id="標點說明"><a href="#標點說明" class="headerlink" title="標點說明"></a>標點說明</h4><p>中華人民共和國國家標準－標點符號用法</p>
+<ul>
+<li>點號<ul>
+<li>句末：句號「。」歎號「！」問號「？」</li>
+<li>句內：逗號「，」分號「；」冒號「：」</li>
+</ul>
+</li>
+<li>標號<ul>
+<li>引號「」『』</li>
+<li>括號（）［］〔〕｛｝【】〖〗</li>
+<li>書名號《》〈〉</li>
+<li>破折號——</li>
+<li>省略號……</li>
+<li>着重號•</li>
+<li>間隔號·・</li>
+<li>分隔號／</li>
+<li>連接號「–」「—」「～」</li>
+</ul>
+</li>
+</ul>
+<h4 id="排版說明"><a href="#排版說明" class="headerlink" title="排版說明"></a>排版說明</h4><p><strong>中文排版</strong></p>
+<ol>
+<li>行首行尾禁則<br>行首禁止出現：結束引號、結束括號、結束書名號、點號。<br>行尾禁止出現：開始引號、開始括號、開始書名號。</li>
+<li>引號<br>使用直角引號和空心直角引號代替雙引號和單引號。表示諷刺、反語時除外。</li>
+<li>破折號<br>破折號佔兩個漢字空間，包含兩個全寬長劃。</li>
+<li>省略號<br>省略號佔兩個漢字空間，包含兩個水平省略號，共六個點。</li>
+</ol>
+<p><strong>混合排版</strong></p>
+<ol>
+<li>基本排版原則<br>中文與英文數字之間要加空格。<br>全形標點與英文數字之間不加空格。<br>遇到完整的英文句子使用半形標點。</li>
+<li>標點使用原則<br>避免使用拉丁標點，儘量使用拉丁標點對應的全形標點，以及中日韓符號標點。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">常用拉丁標點：兩個全寬長劃作破折號——兩個水平省略號作省略號……</span><br><span class="line">常用全形標點：全形句號．全形歎號！全形問號？全形逗號，全形分號；全形冒號：全形圓括號（）全形方括號［］全形花括號｛｝全形斜線號／全形反斜線號＼全形豎線｜全形百分號％全形顎化符～</span><br><span class="line">常用象形標點：象形字間隔　象形字逗號、象形字句號。角括號「」空心角括號『』尖括號〈〉雙尖括號《》實心凹形括號【】空心凹形括號〖〗</span><br></pre></td></tr></table></figure>
+
+</li>
+</ol>
+<h4 id="比例字體"><a href="#比例字體" class="headerlink" title="比例字體"></a>比例字體</h4><p>中英字形寬度之比爲 2:1 的字體有：</p>
+<p>Inconsolata、Monofur、Ubuntu Mono、M+、MS Gothic<br>Iosevka<br>更紗黑體、思源宋體HW<br>中易黑體、中易宋體<br>文泉驛等寬正黑、文泉驛等寬微米黑</p>
+<p>部分西文標點拓展爲全字寬<br>Iosevka                        : 等寬 - 普通<br>Iosevka Curly                  : 等寬 - 彎腿<br>Iosevka Slab                   : 襯線 - 普通<br>Iosevka Curly Slab             : 襯線 - 彎腿</p>
+<p>部分西文標點拓展爲全字寬 + 破折號<br>Iosevka Type                   : 等寬 - 普通<br>Iosevka Type Curly             : 等寬 - 彎腿<br>Iosevka Type Slab              : 襯線 - 普通<br>Iosevka Type Curly Slab        : 襯線 - 彎腿</p>
+<p>所有西文標點均爲半字寬<br>Iosevka Term                   : 等寬 - 普通<br>Iosevka Term Curly             : 等寬 - 彎腿<br>Iosevka Term Slab              : 襯線 - 普通<br>Iosevka Term Curly Slab        : 襯線 - 彎腿</p>
+<p>更紗黑體版本 sarasa-term  的所有西文標點均爲半字寬。<br>更紗黑體版本 sarasa-mono  的部分西文標點拓展爲全字寬，其中包括横翻單上标符、連字點、千分號、水平省略號、、、。<br>更紗黑體版本 sarasa-monoT 的部分西文標點拓展爲全字寬，其中包括横翻單上标符、連字點、千分號、水平省略號、破折號、、、。</p>
+<p>我安裝的：<br>    Sarasa Term SC &amp; Sarasa Term TC<br>    Iosevka Term Slab<br>    Iosevka Term Curly Slab</p>
+<link rel="stylesheet" href="/b-repositories/sulfurandcu.github.io.src/public/css/main.css">
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>文章作者： </strong>硫及銅
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章鏈接：</strong>
+    <a href="https://sulfurandcu.github.io/punctuation-and-character-encoding.html" title="排版、標點與字符編碼">https://sulfurandcu.github.io/punctuation-and-character-encoding.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>文章採用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-SA</a> 許可協議　轉載請註明出處
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/technique-of-rally.html" rel="prev" title="拉力賽駕駛技術">
+      <i class="fa fa-chevron-left"></i> 拉力賽駕駛技術
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/mechanical-keyboard.html" rel="next" title="客製化機械鍵盤">
+      客製化機械鍵盤 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          站點概覽
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#常用標點"><span class="nav-text">常用標點</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符編碼-萬國碼"><span class="nav-text">字符編碼 - 萬國碼</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#控制字符-U-0000-U-001F"><span class="nav-text">控制字符 U+0000 - U+001F</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#拉丁字母-U-0020-U-007F"><span class="nav-text">拉丁字母 U+0020 - U+007F</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#常用標點-1"><span class="nav-text">常用標點</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#中日韓符號標點「全形」"><span class="nav-text">中日韓符號標點「全形」</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#字符輸入"><span class="nav-text">字符輸入</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#標點說明"><span class="nav-text">標點說明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#排版說明"><span class="nav-text">排版說明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#比例字體"><span class="nav-text">比例字體</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">硫及銅</p>
+  <div class="site-description" itemprop="description">枸杞養生  亦能續命</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">類別</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SulfurandCu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SulfurandCu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:u.inkyr@gmail.com" title="E-Mail → mailto:u.inkyr@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SulfurandCu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

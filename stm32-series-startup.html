@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source Han Serif TC:300,300italic,400,400italic,700,700italic|EB Garamond:300,300italic,400,400italic,700,700italic|Iosevka Term Curly Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sulfurandcu.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="問：從上電開始到進入 main 函數之前的這段時間STM32都做了什麼？">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32系列－啓動過程">
+<meta property="og:url" content="https:&#x2F;&#x2F;sulfurandcu.github.io&#x2F;stm32-series-startup.html">
+<meta property="og:site_name" content="ㄅㄆㄇㄈ">
+<meta property="og:description" content="問：從上電開始到進入 main 函數之前的這段時間STM32都做了什麼？">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-18T15:03:52.338Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://sulfurandcu.github.io/stm32-series-startup.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>STM32系列－啓動過程 | ㄅㄆㄇㄈ</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ㄅㄆㄇㄈ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">bopomofo</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>在下</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>類別</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-th"></i>標籤</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sulfurandcu.github.io/stm32-series-startup.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="硫及銅">
+      <meta itemprop="description" content="枸杞養生  亦能續命">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㄅㄆㄇㄈ">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          STM32系列－啓動過程
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2020-01-05 00:00:00" itemprop="dateCreated datePublished" datetime="2020-01-05T00:00:00+08:00">2020-01-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-03-18 23:03:52" itemprop="dateModified" datetime="2020-03-18T23:03:52+08:00">2020-03-18</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B5%8C%E5%85%A5%E5%BC%8F%E5%96%AE%E7%89%87%E8%A3%B8%E6%A9%9F%EF%BC%8DSTM32%E7%B3%BB%E5%88%97/" itemprop="url" rel="index"><span itemprop="name">嵌入式單片裸機－STM32系列</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>問：從上電開始到進入 main 函數之前的這段時間STM32都做了什麼？</p>
+<a id="more"></a>
+
+<p>在探究啓動過程之前，先瞭解一下STM32的啓動模式、內存映射，以及數據在存儲器上的結構。</p>
+<h5 id="啓動模式"><a href="#啓動模式" class="headerlink" title="啓動模式"></a>啓動模式</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">-----------------------------------------------</span><br><span class="line">|  BOOT1  |  BOOT0  |       啓 動 模 式       |</span><br><span class="line">-----------------------------------------------</span><br><span class="line">|    X    |    0    |  從     FLASH     啓動  |</span><br><span class="line">|    0    |    1    |  從 SYSTEM MEMORY 啓動  |</span><br><span class="line">|    1    |    1    |  從     S-RAM     啓動  |</span><br><span class="line">-----------------------------------------------</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="內存映射"><a href="#內存映射" class="headerlink" title="內存映射"></a>內存映射</h5><p>STM32F103XE MEMORY MAP</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">| 0x3FFFFFFF | 0x3FFF FFFF ---------------------  |</span><br><span class="line">|            |             |         |         |  |</span><br><span class="line">|            | 0x2001 0000 ---------------------  |</span><br><span class="line">|    SRAM    |                                    |</span><br><span class="line">|            | 0x2000 FFFF ---------------------  |</span><br><span class="line">|            |             |  64KB   |  S-RAM  |  |</span><br><span class="line">| 0x20000000 | 0x2000 0000 ---------------------  |</span><br><span class="line"></span><br><span class="line">| 0x1FFFFFFF | 0x1FFF FFFF -------------------------------------------------  |</span><br><span class="line">|            |             |         |                                     |  |</span><br><span class="line">|            | 0x1FFF F810 -------------------------------------------------  |</span><br><span class="line">|            |                                                                |</span><br><span class="line">|            | 0x1FFF F80F -------------------------------------------------  |</span><br><span class="line">|            |             |  16B    |             optionbytes             |  |</span><br><span class="line">|            | 0x1FFF F800 -------------------------------------------------  |</span><br><span class="line">|            |                                                                |</span><br><span class="line">|            | 0x1FFF F7FF -------------------------------------------------  |</span><br><span class="line">|            |             |  2KB    |            SYSTEM MEMORY            |  |</span><br><span class="line">|    CODE    | 0x1FFF F000 -------------------------------------------------  |</span><br><span class="line">|            |                                                                |</span><br><span class="line">|            | 0x0807 FFFF -------------------------------------------------  |</span><br><span class="line">|            |             |  512KB  |                FLASH                |  |</span><br><span class="line">|            | 0x0800 0000 -------------------------------------------------  |</span><br><span class="line">|            |                                                                |</span><br><span class="line">|            | 0x0007 FFFF -------------------------------------------------  |</span><br><span class="line">|            |             |  512KB  |  aliased to flash or system memory  |  |</span><br><span class="line">| 0x00000000 | 0x0000 0000 -------------------------------------------------  |</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="數據結構"><a href="#數據結構" class="headerlink" title="數據結構"></a>數據結構</h5><p><strong>S-RAM 數據結構</strong><br>程序執行到 main 函數時 S-RAM 的數據結構</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0x2000∗∗∗∗ - 0x2000∗∗∗∗   命令參數、環境變量</span><br><span class="line">0x2000∗∗∗∗ - 0x2000∗∗∗∗   棧區                              動態局部變量</span><br><span class="line">0x2000∗∗∗∗ - 0x2000∗∗∗∗   堆區                              動態內存分配</span><br><span class="line">0x2000∗∗∗∗ - 0x2000∗∗∗∗   數據段  .bss - 未初始化數據段 ZI  全局區靜態區</span><br><span class="line">0x20000000 - 0x2000∗∗∗∗   數據段 .data - 已初始化數據段 RW  全局區靜態區</span><br></pre></td></tr></table></figure>
+
+<p><strong>FLASH 數據結構</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">0x0800∗∗∗∗ - 0x0800∗∗∗∗             數據段 - 未初始化數據段 ZI-DATA</span><br><span class="line"></span><br><span class="line">0x0800∗∗∗∗ - 0x0800∗∗∗∗             數據段 - 已初始化數據段 RW-DATA</span><br><span class="line"></span><br><span class="line">0x0800∗∗∗∗ - 0x0800∗∗∗∗             加載數據段的四個參數（數據段在 FLASH 中的起始地址，加載到 S-RAM 上的目的地址，數據段的總大小，加載數據段的函數__scatterload_copy）</span><br><span class="line"></span><br><span class="line">0x0800∗∗∗∗ - 0x0800∗∗∗∗             初始化棧區的四個參數（棧空間的起始地址，棧空間的總大小，初始化棧空間的函數__scatterload_zeroinit）</span><br><span class="line"></span><br><span class="line">0x0800∗∗∗∗ - 0x0800∗∗∗∗             代碼段   main</span><br><span class="line">0x0800∗∗∗∗ - 0x0800∗∗∗∗             代碼段   (..) (SystemInit) system_stm32fxxx.c</span><br><span class="line">0x0800∗∗∗∗ - 0x0800∗∗∗∗             代碼段   (..) (xx_Handler) stm32fxxx_it.c</span><br><span class="line">0x0800∗∗∗∗ - 0x0800∗∗∗∗             代碼段   exit</span><br><span class="line">0x0800∗∗∗∗ - 0x0800∗∗∗∗             代碼段   __user_initial_stackheap*</span><br><span class="line">0x0800∗∗∗∗ - 0x0800∗∗∗∗             代碼段   (..) (xx_Handler) startup_stm32fxxx.s</span><br><span class="line">0x0800∗∗∗∗ - 0x0800∗∗∗∗             代碼段   __rt_*</span><br><span class="line">0x0800∗∗∗∗ - 0x0800∗∗∗∗             代碼段   __scatterload*</span><br><span class="line">0x08000130 - 0x0800****             代碼段   __main</span><br><span class="line"></span><br><span class="line">0x08000040 - 0x0800012F   60 x 4B   external interrupts           - 外部中斷向量</span><br><span class="line"></span><br><span class="line">0x08000008 - 0x0800003F   14 x 4B   exception handler                 - 異常向量</span><br><span class="line"></span><br><span class="line">0x08000004 - 0x08000007   01 x 4B   exception handler - reset handler - 復位向量</span><br><span class="line"></span><br><span class="line">0x08000000 - 0x08000003   01 x 4B   MSP             - 棧指針初始值，由編譯器生成</span><br></pre></td></tr></table></figure>
+
+
+<h5 id="過程分析"><a href="#過程分析" class="headerlink" title="過程分析"></a>過程分析</h5><p>預備知識－系統異常是什麼？<br>Cortex-M3 有 16 個系統異常，當產生某種異常時，Cortex-M3 根據「異常向量表」定位該類異常對應的處理程序（xxx_handler）的入口地址，並跳轉到該異常處理程序。缺省情況下，CM3 認爲該異常向量表位於 0x00000000 處（若啓動模式爲從 FLASH 中啓動，則自動映射到 0x08000000 處），每個向量佔用四個字節。（異常向量表的位置可通過向量表偏移量寄存器（VTOR 0xE000ED08）更改）</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Reset_Handler   PROC</span><br><span class="line">                EXPORT  Reset_Handler             [WEAK]</span><br><span class="line">                IMPORT  __main</span><br><span class="line">                IMPORT  SystemInit</span><br><span class="line">                LDR     R0, =SystemInit</span><br><span class="line">                BLX     R0</span><br><span class="line">                LDR     R0, =__main</span><br><span class="line">                BX      R0</span><br><span class="line">                ENDP</span><br></pre></td></tr></table></figure>
+
+<p>以下爲不使用系統庫（勾選 USE MICROLIB 選項）時的啓動過程。（STM32F103XE）</p>
+<ul>
+<li>首先：上電，復位動作開始（復位是優先級最高的系統異常）<ul>
+<li>NVIC 將內核保持在復位狀態（NVIC 對其大部分寄存器清零，處理器處於特權級線程模式，使用 MSP 主棧指針）</li>
+<li>NVIC 將內核從復位狀態釋放</li>
+<li>內核爲 MSP 主棧指針設置初始值（查找異常向量表，從 0x00000000 處讀取四字節數據作爲 MSP 主棧指針的初始值（__initial_sp，由編譯器計算得出））</li>
+<li>內核爲 PC 寄存器設置初始值（查找異常向量表，從 0x00000004 處讀取四字節數據作爲 PC 程序計數器初始值（Reset_Handler，由編譯器根據啓動文件得出，指向代碼段中的 Reset_Handler 函數））</li>
+</ul>
+</li>
+<li>然後：根據 PC 的初始值找到 Reset_Handler 函數並執行<ul>
+<li>SystemInit</li>
+<li>__main<!--（軟件設置 SP 寄存器，加載數據段 .data 和 .bss，初始化棧區，跳轉到 main 函数）--><ul>
+<li>__scatterload<ul>
+<li>__scatterload_copy : copies the non-root code and data region from their load-time locations to the execute-time regions.</li>
+<li>__scatterload_zeroinit : initializes the Zero Initialized (ZI) regions to zero.</li>
+</ul>
+</li>
+<li>__rt_entry<ul>
+<li>_platform_pre_stackheap_init</li>
+<li>__user_setup_stackheap</li>
+<li>_platform_post_stackheap_init</li>
+<li>__rt_lib_init<ul>
+<li>_fp_init</li>
+<li>_init_alloc</li>
+<li>_rand_init</li>
+<li>_get_lc_collate</li>
+<li>_get_lc_ctype</li>
+<li>_get_lc_monetary</li>
+<li>_get_lc_numeric</li>
+<li>_get_lc_time</li>
+<li>_atexit_init</li>
+<li>_signal_init</li>
+<li>_fp_trap_init</li>
+<li>_clock_init</li>
+<li>_getenv_init</li>
+<li>_initio</li>
+<li>_ARM_get_argv</li>
+<li>_alloca_initialize</li>
+<li>_ARM_exceptions_init</li>
+<li>__cpp_initialize__aeabi_</li>
+</ul>
+</li>
+<li>_platform_post_lib_init</li>
+<li>main()</li>
+<li>exit()</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<blockquote>
+<p>The _platform_* functions are not part of the standard C library. If you define them, then the linker places calls to them in __rt_entry.<br>—— <em>ARM Compiler C Library Startup and Initialization</em></p>
+</blockquote>
+<p><a href="http://bbs.21ic.com/icview-2837078-1-4.html" target="_blank" rel="noopener">STM32啓動過程－啓動文件分析</a><br><a href="https://www.cnblogs.com/jiangzhaowei/p/9240238.html" target="_blank" rel="noopener">STM32啓動過程解讀與跟蹤驗證</a><br><a href="https://blog.csdn.net/wheat_in_winner/article/details/53583462" target="_blank" rel="noopener">STM32的啓動過程分析</a><br><a href="https://blog.csdn.net/qq_23899395/article/details/90344731" target="_blank" rel="noopener">STM32的啓動堆棧初始化</a></p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>文章作者： </strong>硫及銅
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章鏈接：</strong>
+    <a href="https://sulfurandcu.github.io/stm32-series-startup.html" title="STM32系列－啓動過程">https://sulfurandcu.github.io/stm32-series-startup.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>文章採用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-SA</a> 許可協議　轉載請註明出處
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/coding-style.html" rel="prev" title="代碼風格及規範">
+      <i class="fa fa-chevron-left"></i> 代碼風格及規範
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          站點概覽
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#啓動模式"><span class="nav-text">啓動模式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#內存映射"><span class="nav-text">內存映射</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#數據結構"><span class="nav-text">數據結構</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#過程分析"><span class="nav-text">過程分析</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">硫及銅</p>
+  <div class="site-description" itemprop="description">枸杞養生  亦能續命</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">類別</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SulfurandCu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SulfurandCu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:u.inkyr@gmail.com" title="E-Mail → mailto:u.inkyr@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SulfurandCu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

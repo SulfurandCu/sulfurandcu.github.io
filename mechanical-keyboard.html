@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source Han Serif TC:300,300italic,400,400italic,700,700italic|EB Garamond:300,300italic,400,400italic,700,700italic|Iosevka Term Curly Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sulfurandcu.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="本文講述了如何制作一把完全自定义的机械键盘，暫以 GH60-POKER 配列为例，其實目前我更推薦 XIUDI 家的 XD64 配列，有方向鍵可以用，嘿嘿。 瞎扯先扯一扯我当年是怎么走向机械键盘这条不归路的。大约是 2015 年 03 月，我购置了第一台计算机，键位为 qwerty 布局，用了大概半年。在此之前，和大多数人一样，我以为 qwerty 是这个世界上唯一的键位布局，其实当时的我连“键位">
+<meta property="og:type" content="article">
+<meta property="og:title" content="客製化機械鍵盤">
+<meta property="og:url" content="https:&#x2F;&#x2F;sulfurandcu.github.io&#x2F;mechanical-keyboard.html">
+<meta property="og:site_name" content="ㄅㄆㄇㄈ">
+<meta property="og:description" content="本文講述了如何制作一把完全自定义的机械键盘，暫以 GH60-POKER 配列为例，其實目前我更推薦 XIUDI 家的 XD64 配列，有方向鍵可以用，嘿嘿。 瞎扯先扯一扯我当年是怎么走向机械键盘这条不归路的。大约是 2015 年 03 月，我购置了第一台计算机，键位为 qwerty 布局，用了大概半年。在此之前，和大多数人一样，我以为 qwerty 是这个世界上唯一的键位布局，其实当时的我连“键位">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-19T15:05:21.764Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://sulfurandcu.github.io/mechanical-keyboard.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>客製化機械鍵盤 | ㄅㄆㄇㄈ</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ㄅㄆㄇㄈ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">bopomofo</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>在下</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>類別</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-th"></i>標籤</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sulfurandcu.github.io/mechanical-keyboard.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="硫及銅">
+      <meta itemprop="description" content="枸杞養生  亦能續命">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㄅㄆㄇㄈ">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          客製化機械鍵盤
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-12-15 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-15T00:00:00+08:00">2019-12-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-03-19 23:05:21" itemprop="dateModified" datetime="2020-03-19T23:05:21+08:00">2020-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%A1%AC%E4%BB%B6%E8%A3%BD%E4%BD%9C/" itemprop="url" rel="index"><span itemprop="name">硬件製作</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>本文講述了如何制作一把完全自定义的机械键盘，暫以 GH60-POKER 配列为例，其實目前我更推薦 XIUDI 家的 XD64 配列，有方向鍵可以用，嘿嘿。</p>
+<h4 id="瞎扯"><a href="#瞎扯" class="headerlink" title="瞎扯"></a>瞎扯</h4><p>先扯一扯我当年是怎么走向机械键盘这条不归路的。大约是 2015 年 03 月，我购置了第一台计算机，键位为 qwerty 布局，用了大概半年。在此之前，和大多数人一样，我以为 qwerty 是这个世界上唯一的键位布局，其实当时的我连“键位布局”的概念都没有，以为所有的键盘都是“那样的”。直到有一天，打字时手指的上蹿下跳实在令我难以忍受: why are the keys arranged so phuking stupidly? 之后我逐渐了解到原来这个世界上还有 dsk、colemak、neo、bepo 这些神奇的东西。原来早在一百多年前，就有人问过这个问题，而且还有众多替代方案。但是，为什么他们没有取代 qwerty 成为主流呢？其中一个较为流行的说法是：这是路径依赖和商业运作共同作用的结果。然而现实往往更为复杂，感兴趣的朋友可以参考这篇文章 <a href="https://itotd.com/articles/3528/the-dvorak-keyboard-controversy/" target="_blank" rel="noopener">the dvorak keyboard controversy</a> 本文不再赘述。</p>
+<a id="more"></a>
+
+<p><strong>既然还有这么多选择，那就先换一个 dsk (dvorak-simplified-keyboard) 试试呗！</strong></p>
+<p><strong>当时的功能需求是这样的：</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、能够在 qwerty 和 dsk 之间无缝切换（我并不想完全放弃 qwerty ，所以想保留下来与 dsk 并存）。</span><br><span class="line">2、方便移植，可用性高。</span><br><span class="line">3、快捷键方便使用。这一点至关重要，快捷键问题得不到合理解决是放弃的主要因素。</span><br><span class="line">4、能够更改控制键（ctrl、alt、shift、win......）。</span><br><span class="line">5、方便中英双语输入。</span><br><span class="line">6、游戏中可正常使用。部分游戏含有防止反破解和作弊的措施，软件层面的映射很有可能无效。</span><br></pre></td></tr></table></figure>
+
+<p><strong>可行的实现方式：1、软件方式进行键位映射；2、硬件方式制作自定义机械键盘。</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、软件方式的经济成本很低，时间成本较高，每换一台计算机就需要重新配置。</span><br><span class="line">2、硬件方式的经济成本较高，时间成本较低，做好之后即插即用但是不便携带。</span><br></pre></td></tr></table></figure>
+<p>由于穷的缘故，起初我是使用前者来实现 dsk 布局的。</p>
+<p><strong>当时的最终方案：</strong><br>映射软件从最初的 remapkey.exe 到 AutoHotkey 再到后来的 msklc.exe ，每一种都或多或少存在着不足之处，不过组合起来倒也还能凑合着用：使用 remapkey.exe 对控制键进行映射，使用 msklc.exe 制作 dsk &amp; zhvorak 键盘（这里的键盘指的是 windows 系统中输入法的键盘），使用 AutoHotkey 定义快捷键。该方案完全满足上述条件，虽然使用起来仍有诸多不便，不过这也是当时我能想到的最好的办法了。我愉快地用了一段时间，直到我接触到 linux 系统和虚拟机……其中的血与泪我就不多说了，从此，我便踏上了机械键盘的不归路……</p>
+<p><strong>2019-12-30更新：</strong><br>理想状态下我身边始终有一把我的键盘，实际上恰恰相反。所以难免要对键位映射，再加上我已经不再使用微软拼音，所以微软的 msklc.exe 利器对我来说便是明日黄花。但是我发现只要将上述需求中的第一条去掉 remapkey + autohotkey 的组合其实也挺好用。当然，若是第一条对你来说很重要那就另当别论，就像我当初那样，但人是会变的嘛！嘿嘿嘿……<br>/* end of 2019-12-30 update */</p>
+<p><strong>插播一条广告 —— zhvorak的由来：</strong><br>不论是 dsk 还是 colemak 布局，他们都是为拉丁字母输入设计的。实际上这类布局我使用了不到一个月就扭头开始捣鼓新布局去了，然后搞出了这么一个玩意儿：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1   2   3   4   5   6   7   8   9   0   [   ]          !   @   #   $   %   ^   &amp;   *   (   )   &#123;   &#125;</span><br><span class="line">;   ,   .   w   y   k   r   d   l   c   /   =   \      :   &lt;   &gt;   W   Y   K   R   D   L   C   ?   +   |</span><br><span class="line">a   o   e   i   u   g   h   t   n   s   -              A   O   E   I   U   G   H   T   N   S   _</span><br><span class="line">&apos;   q   x   j   b   f   m   p   v   z                  &quot;   Q   X   J   B   F   M   P   V   Z</span><br></pre></td></tr></table></figure>
+<p>该布局没有任何科学依据，只有玄学依据。<br>该布局的名称为 zhvorak，基于 dsk 修改而来 ，可以暂时看作是 dsk 的中文版本。<br>该布局的设计初衷是为了提高拼音输入（兼顾英文输入）的舒适度，而不是输入速度。<br>另外希望能够抛砖引玉 - 我在 Github 上创建了一个仓库，如有好的想法，欢迎补充，详见：<br>2019.10.18 - <a href="https://github.com/SulfurandCu/zhvorak-keyboard-layout/" target="_blank" rel="noopener">zhvorak-keyboard-layout</a></p>
+<h4 id="新布局新问题和新方案"><a href="#新布局新问题和新方案" class="headerlink" title="新布局新问题和新方案"></a>新布局新问题和新方案</h4><p>正如上述所说，平台的更换会带来一系列问题，继续使用软件映射的方式很有可能会把我逼疯，为了避免这种事情发生，最终我决定做一个机械键盘出来。<br>这个键盘目前具备的功能如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、全键可编程（所有键位可以任意排序）</span><br><span class="line">2、共八层逻辑（每一层均可以放置一个布局，例如 dsk、colemak、zhvorak、numpad 等）</span><br><span class="line">3、组合快捷键（使用功能键FN可以宏定义任一快捷键）</span><br></pre></td></tr></table></figure>
+<p>使用到的工具：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">键盘配列制作 : http://www.keyboard-layout-editor.com/</span><br><span class="line">键表文件生成 : https://tkg.io/</span><br><span class="line">程序在线烧录 : https://tkg.io/</span><br><span class="line">程序离线烧录 : https://github.com/kairyu/tkg-toolkit</span><br></pre></td></tr></table></figure>
+<p>这几个工具的使用：设计好键位布局后，根据该布局使用 keyboard-layout-editor 制作键盘配列（最多八层），然后把 keyboard-layout-editor 生成的各层 raw data 拷贝到 tkg.io 中对应的各层中，在 tkg.io 中设置层快捷键以及组合快捷键（可选，前提是要在键盘配列中先设置一个功能键），最后可以选择在线烧录（需要使用chrome浏览器并安装插件）或者先生成源码然后使用 tkg-toolkit 离线烧录。</p>
+<h4 id="机械键盘具体制作步骤"><a href="#机械键盘具体制作步骤" class="headerlink" title="机械键盘具体制作步骤"></a>机械键盘具体制作步骤</h4><p>2017.04.17 - 零件全部到齐<br>2017.04.18 - 我的第一把机械键盘制作完成</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、准备工作</span><br><span class="line">2、材料购置</span><br><span class="line">3、组装焊接</span><br><span class="line">4、生成键表</span><br><span class="line">5、程序烧录</span><br><span class="line">6、测试使用</span><br></pre></td></tr></table></figure>
+
+<h5 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h5><p>明确需求：键位布局，层数，层快捷键，组合快捷键<br>价格上限：略.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;keyboard-layout-editor&gt;</span><br><span class="line">第 0 层：主键区（fn1、基本键位zhvorak布局）</span><br><span class="line">第 1 层：功能区（fn2、f1-f12、up、down、left、right、pgup、pgdn、home、end、capslock、menu、delete、mute、voldn、volup、scrlk、prtsc、fn11-save、fn12-undo、fn13-redo、fn14-paste、fn15-cut、fn16-copy、fn17-find、fn18-replace）</span><br><span class="line">第 2 层：中间层（fn21、fn22、fn23、fn30、fn31）</span><br><span class="line">第 3 层：主键区字母替换为-zhvorak</span><br><span class="line">第 4 层：主键区字母替换为-dvorak</span><br><span class="line">第 5 层：主键区字母替换为-colemak</span><br><span class="line">第 6 层：主键区字母替换为-qwerty</span><br><span class="line">第 7 层：主键区字母替换为-numpads</span><br></pre></td></tr></table></figure>
+
+<h5 id="材料购置"><a href="#材料购置" class="headerlink" title="材料购置"></a>材料购置</h5><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">1、外壳		乳白色塑料外壳</span><br><span class="line">2、印刷电路板	支持POKER配列的印刷电路板</span><br><span class="line">3、轴体		佳达隆五脚黑/红/茶/青轴、卫星轴</span><br><span class="line">4、键帽		白色无刻键帽</span><br><span class="line">5、接口		TYPE-C/MINI-B   wireless(2.4G/Bluetooth)</span><br></pre></td></tr></table></figure>
+
+<h5 id="组装焊接"><a href="#组装焊接" class="headerlink" title="组装焊接"></a>组装焊接</h5><p>略.</p>
+<h5 id="生成键表"><a href="#生成键表" class="headerlink" title="生成键表"></a>生成键表</h5><p>1、并将各层的 raw data 拷贝到 TKG 中的对应层中</p>
+<p>2、配置 fn 功能键</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">fn1  : 瞬时开启第1层</span><br><span class="line">fn2  : 瞬时开启第2层</span><br><span class="line">fn21 : 固定开启第3层</span><br><span class="line">fn22 : 固定开启第4层</span><br><span class="line">fn23 : 固定开启第5层</span><br><span class="line">fn30 : 固定开启第6层</span><br><span class="line">fn31 : 固定开启第7层</span><br><span class="line">fn11 : 保存</span><br><span class="line">fn12 : 撤销</span><br><span class="line">fn13 : 重做</span><br><span class="line">fn14 : 粘贴</span><br><span class="line">fn15 : 剪切</span><br><span class="line">fn16 : 复制</span><br><span class="line">fn17 : 查找</span><br><span class="line">fn18 : 替换</span><br></pre></td></tr></table></figure>
+
+<h5 id="程序烧录"><a href="#程序烧录" class="headerlink" title="程序烧录"></a>程序烧录</h5><p>1、在线烧录 tkg-chrome-app<br>2、离线烧录 tkg-toolkit</p>
+<h5 id="测试使用"><a href="#测试使用" class="headerlink" title="测试使用"></a>测试使用</h5><p>略.</p>
+<h5 id="我的配列"><a href="#我的配列" class="headerlink" title="我的配列"></a>我的配列</h5><h6 id="qwerty-poker-61"><a href="#qwerty-poker-61" class="headerlink" title="qwerty/poker/61"></a>qwerty/poker/61</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//TMK Keymap Generator@http://tkg.io/</span><br><span class="line">//第0层：正常(qwerty-poker)键位</span><br><span class="line">//第1层：f1-f12、menu、capslock、delete、mute、home、end、up、down、left、right、pgup、pgdn、backspace、penter、screenlock、printscreen、voldn、volup、fn11-fn18 shotcuts</span><br><span class="line">//第2层：开启第3、4、5、6、7层的开关键(fn21、fn22、fn23、fn30、fn31)</span><br><span class="line">//第3层：wkrdlc-main-zone</span><br><span class="line">//第4层：dvorak-main-zone</span><br><span class="line">//第5层：colmak-main-zone</span><br><span class="line">//第6层：qwerty-main-zone</span><br><span class="line">//第7层：主键区左侧替换为numlock、home、end、up、down、left、right、pgup、pgdn，右侧替换为小键盘</span><br><span class="line"></span><br><span class="line">通常</span><br><span class="line">键盘     GH60(RevA/B/C)</span><br><span class="line"></span><br><span class="line">层</span><br><span class="line">层模式   标准</span><br><span class="line">层数     8</span><br><span class="line"></span><br><span class="line">第0层</span><br><span class="line">[&quot;esc&quot;,&quot;!\n1&quot;,&quot;@\n2&quot;,&quot;#\n3&quot;,&quot;$\n4&quot;,&quot;%\n5&quot;,&quot;^\n6&quot;,&quot;&amp;\n7&quot;,&quot;*\n8&quot;,&quot;(\n9&quot;,&quot;)\n0&quot;,&quot;_\n-&quot;,&quot;+\n=&quot;,&#123;w:2&#125;,&quot;backspace&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;tab&quot;,&quot;q&quot;,&quot;w&quot;,&quot;e&quot;,&quot;r&quot;,&quot;t&quot;,&quot;y&quot;,&quot;u&quot;,&quot;i&quot;,&quot;o&quot;,&quot;p&quot;,&quot;&#123;\n[&quot;,&quot;&#125;\n]&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;w:1.75&#125;,&quot;capslock&quot;,&quot;a&quot;,&quot;s&quot;,&quot;d&quot;,&quot;f&quot;,&quot;g&quot;,&quot;h&quot;,&quot;j&quot;,&quot;k&quot;,&quot;l&quot;,&quot;:\n;&quot;,&quot;\&quot;\n&apos;&quot;,&#123;w:2.25&#125;,&quot;enter&quot;],</span><br><span class="line">[&#123;w:2.25&#125;,&quot;shift&quot;,&quot;z&quot;,&quot;x&quot;,&quot;c&quot;,&quot;v&quot;,&quot;b&quot;,&quot;n&quot;,&quot;m&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;?\n/&quot;,&#123;w:2.75&#125;,&quot;rshift&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;ctrl&quot;,&#123;w:1.25&#125;,&quot;alt&quot;,&#123;w:1.25&#125;,&quot;fn1&quot;,&#123;w:6.25&#125;,&quot;space&quot;,&#123;w:1.25&#125;,&quot;ralt&quot;,&#123;w:1.25&#125;,&quot;fn1&quot;,&#123;w:1.25&#125;,&quot;rctrl&quot;,&#123;w:1.25&#125;,&quot;rwin&quot;]</span><br><span class="line"></span><br><span class="line">第1层</span><br><span class="line">[&quot;~\n`&quot;,&quot;f1&quot;,&quot;f2&quot;,&quot;f3&quot;,&quot;f4&quot;,&quot;f5&quot;,&quot;f6&quot;,&quot;f7&quot;,&quot;f8&quot;,&quot;f9&quot;,&quot;f10&quot;,&quot;f11&quot;,&quot;f12&quot;,&#123;w:2&#125;,&quot;fn2&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;mute&quot;,&quot;fn11&quot;,&quot;fn12&quot;,&quot;fn13&quot;,&quot;no&quot;,&quot;no&quot;,&quot;pgup&quot;,&quot;home&quot;,&quot;up&quot;,&quot;end&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&#123;w:1.5&#125;,&quot;no&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;fn14&quot;,&quot;fn15&quot;,&quot;fn16&quot;,&quot;no&quot;,&quot;no&quot;,&quot;pgdn&quot;,&quot;left&quot;,&quot;down&quot;,&quot;right&quot;,&quot;no&quot;,&quot;no&quot;,&#123;w:2.25&#125;,&quot;menu&quot;],</span><br><span class="line">[&#123;a:7,w:2.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;delete&quot;,&quot;fn17&quot;,&quot;fn18&quot;,&quot;no&quot;,&quot;home&quot;,&quot;end&quot;,&quot;bs&quot;,&quot;voldn&quot;,&quot;volup&quot;,&quot;mute&quot;,&#123;a:7,w:2.75&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;a:4,w:6.25&#125;,&quot;penter&quot;,&#123;w:1.25&#125;,&quot;prtsc&quot;,&#123;a:7,w:1.25&#125;,&quot;&quot;,&#123;a:4,w:1.25&#125;,&quot;pgup&quot;,&#123;w:1.25&#125;,&quot;pgdn&quot;]</span><br><span class="line"></span><br><span class="line">第2层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;fn21&quot;,&quot;fn22&quot;,&quot;fn23&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;fn30&quot;,&quot;fn31&quot;,&#123;a:7,w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:1.5&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.75&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2.25&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2.75&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第3层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;a:4&#125;,&quot;&#123;\n[&quot;,&quot;&#125;\n]&quot;,&#123;a:7,w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;:\n;&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;w&quot;,&quot;y&quot;,&quot;k&quot;,&quot;r&quot;,&quot;d&quot;,&quot;l&quot;,&quot;c&quot;,&quot;?\n/&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;o&quot;,&quot;e&quot;,&quot;i&quot;,&quot;u&quot;,&quot;g&quot;,&quot;h&quot;,&quot;t&quot;,&quot;n&quot;,&quot;s&quot;,&quot;_\n-&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;\&quot;\n&apos;&quot;,&quot;q&quot;,&quot;x&quot;,&quot;j&quot;,&quot;b&quot;,&quot;f&quot;,&quot;m&quot;,&quot;p&quot;,&quot;v&quot;,&quot;z&quot;,&#123;a:7,w:2.75&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第4层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;a:4&#125;,&quot;&#123;\n[&quot;,&quot;&#125;\n]&quot;,&#123;a:7,w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;\&quot;\n&apos;&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;p&quot;,&quot;y&quot;,&quot;f&quot;,&quot;g&quot;,&quot;c&quot;,&quot;r&quot;,&quot;l&quot;,&quot;?\n/&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;o&quot;,&quot;e&quot;,&quot;u&quot;,&quot;i&quot;,&quot;d&quot;,&quot;h&quot;,&quot;t&quot;,&quot;n&quot;,&quot;s&quot;,&quot;_\n-&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;:\n;&quot;,&quot;q&quot;,&quot;j&quot;,&quot;k&quot;,&quot;x&quot;,&quot;b&quot;,&quot;m&quot;,&quot;w&quot;,&quot;v&quot;,&quot;z&quot;,&#123;a:7,w:2.75&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第5层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;a:4&#125;,&quot;&#123;\n[&quot;,&quot;&#125;\n]&quot;,&#123;a:7,w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;q&quot;,&quot;w&quot;,&quot;f&quot;,&quot;p&quot;,&quot;g&quot;,&quot;j&quot;,&quot;l&quot;,&quot;u&quot;,&quot;y&quot;,&quot;:\n;&quot;,&quot;_\n-&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;r&quot;,&quot;s&quot;,&quot;t&quot;,&quot;d&quot;,&quot;h&quot;,&quot;n&quot;,&quot;e&quot;,&quot;i&quot;,&quot;o&quot;,&quot;\&quot;\n&apos;&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;z&quot;,&quot;x&quot;,&quot;c&quot;,&quot;v&quot;,&quot;b&quot;,&quot;k&quot;,&quot;m&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;?\n/&quot;,&#123;a:7,w:2.75&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第6层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;q&quot;,&quot;w&quot;,&quot;e&quot;,&quot;r&quot;,&quot;t&quot;,&quot;y&quot;,&quot;u&quot;,&quot;i&quot;,&quot;o&quot;,&quot;p&quot;,&quot;&#123;\n[&quot;,&quot;&#125;\n]&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;s&quot;,&quot;d&quot;,&quot;f&quot;,&quot;g&quot;,&quot;h&quot;,&quot;j&quot;,&quot;k&quot;,&quot;l&quot;,&quot;:\n;&quot;,&quot;\&quot;\n&apos;&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;z&quot;,&quot;x&quot;,&quot;c&quot;,&quot;v&quot;,&quot;b&quot;,&quot;n&quot;,&quot;m&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;?\n/&quot;,&#123;a:7,w:2.75&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第7层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;a:4,w:1.5&#125;,&quot;numlock&quot;,&quot;home&quot;,&quot;up&quot;,&quot;end&quot;,&quot;pgup&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;*&quot;,&quot;/&quot;,&quot;7\nhome&quot;,&quot;8\nup&quot;,&quot;9\npgup&quot;,&#123;w:1.5&#125;,&quot;0\ninsert&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;left&quot;,&quot;down&quot;,&quot;right&quot;,&quot;pgdn&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;+&quot;,&quot;4\nleft&quot;,&quot;5&quot;,&quot;6\nright&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;-&quot;,&quot;1\nend&quot;,&quot;2\ndown&quot;,&quot;3\npgdn&quot;,&#123;w:2.75&#125;,&quot;.\ndelete&quot;],</span><br><span class="line">[&#123;a:7,w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">========【普通模式】========</span><br><span class="line">Fn</span><br><span class="line">Fn1     层操作&gt;瞬时开启&gt;层 1</span><br><span class="line">Fn2     层操作&gt;瞬时开启&gt;层 2</span><br><span class="line">Fn11    组合键&gt;修饰键&gt;lCtrl+S  保存</span><br><span class="line">Fn12    组合键&gt;修饰键&gt;lCtrl+Z  撤销</span><br><span class="line">Fn13    组合键&gt;修饰键&gt;lCtrl+Y  重做</span><br><span class="line">Fn14    组合键&gt;修饰键&gt;lCtrl+V  粘贴</span><br><span class="line">Fn15    组合键&gt;修饰键&gt;lCtrl+X  剪切</span><br><span class="line">Fn16    组合键&gt;修饰键&gt;lCtrl+C  复制</span><br><span class="line">Fn17    组合键&gt;修饰键&gt;lCtrl+F  查找</span><br><span class="line">Fn18    组合键&gt;修饰键&gt;lCtrl+H  替换</span><br><span class="line">Fn21    层操作&gt;开关&gt;层 3</span><br><span class="line">Fn22    层操作&gt;开关&gt;层 4</span><br><span class="line">Fn23    层操作&gt;开关&gt;层 5</span><br><span class="line">Fn30    层操作&gt;开关&gt;层 6</span><br><span class="line">Fn31    层操作&gt;开关&gt;层 7</span><br><span class="line"></span><br><span class="line">LED</span><br><span class="line">Capslock    绑定&gt;无&gt;背光</span><br><span class="line">GPIO0       绑定&gt;无&gt;背光</span><br><span class="line">GPIO1       绑定&gt;无&gt;背光</span><br><span class="line">GPIO2       绑定&gt;无&gt;背光</span><br><span class="line">GPIO3       绑定&gt;无&gt;背光</span><br><span class="line"></span><br><span class="line">Fn Import/Export:</span><br><span class="line">&quot;1&quot;:[&quot;ACTION_LAYER_MOMENTARY&quot;,1],&quot;2&quot;:[&quot;ACTION_LAYER_MOMENTARY&quot;,&quot;2&quot;],&quot;11&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_S&quot;],&quot;12&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_Z&quot;],&quot;13&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_Y&quot;],&quot;14&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_V&quot;],&quot;15&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_X&quot;],&quot;16&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_C&quot;],&quot;17&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_F&quot;],&quot;18&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_H&quot;],&quot;21&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;3&quot;],&quot;22&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;4&quot;],&quot;23&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;5&quot;],&quot;30&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;6&quot;],&quot;31&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;7&quot;]</span><br></pre></td></tr></table></figure>
+<br>
+
+<h6 id="zhvorak-poker-61"><a href="#zhvorak-poker-61" class="headerlink" title="zhvorak/poker/61"></a>zhvorak/poker/61</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//第0层：正常(zhvorak-poker)键位</span><br><span class="line">//第1层：f1-f12、menu、capslock、delete、mute、home、end、up、down、left、right、pgup、pgdn、backspace、penter、screenlock、printscreen、voldn、volup、fn11-fn18 shotcuts</span><br><span class="line">//第2层：开启第3、4、5、6、7层的开关键(fn21、fn22、fn23、fn30、fn31)</span><br><span class="line">//第3层：wkrdlc-main-zone</span><br><span class="line">//第4层：dvorak-main-zone</span><br><span class="line">//第5层：colmak-main-zone</span><br><span class="line">//第6层：qwerty-main-zone</span><br><span class="line">//第7层：主键区左侧替换为numlock、home、end、up、down、left、right、pgup、pgdn，右侧替换为小键盘</span><br><span class="line"></span><br><span class="line">通常</span><br><span class="line">键盘     GH60(RevA/B/C)</span><br><span class="line"></span><br><span class="line">层</span><br><span class="line">层模式   标准</span><br><span class="line">层数     8</span><br><span class="line"></span><br><span class="line">第0层</span><br><span class="line">[&quot;esc&quot;,&quot;!\n1&quot;,&quot;@\n2&quot;,&quot;#\n3&quot;,&quot;$\n4&quot;,&quot;%\n5&quot;,&quot;^\n6&quot;,&quot;&amp;\n7&quot;,&quot;*\n8&quot;,&quot;(\n9&quot;,&quot;)\n0&quot;,&quot;&#123;\n[&quot;,&quot;&#125;\n]&quot;,&#123;w:2&#125;,&quot;backspace&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;tab&quot;,&quot;:\n;&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;w&quot;,&quot;y&quot;,&quot;k&quot;,&quot;r&quot;,&quot;d&quot;,&quot;l&quot;,&quot;c&quot;,&quot;?\n/&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;w:1.75&#125;,&quot;ctrl&quot;,&quot;a&quot;,&quot;o&quot;,&quot;e&quot;,&quot;i&quot;,&quot;u&quot;,&quot;g&quot;,&quot;h&quot;,&quot;t&quot;,&quot;n&quot;,&quot;s&quot;,&quot;_\n-&quot;,&#123;w:2.25&#125;,&quot;enter&quot;],</span><br><span class="line">[&#123;w:2.25&#125;,&quot;shift&quot;,&quot;\&quot;\n&apos;&quot;,&quot;q&quot;,&quot;x&quot;,&quot;j&quot;,&quot;b&quot;,&quot;f&quot;,&quot;m&quot;,&quot;p&quot;,&quot;v&quot;,&quot;z&quot;,&#123;w:2.75&#125;,&quot;rctrl&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;win&quot;,&#123;w:1.25&#125;,&quot;alt&quot;,&#123;w:1.25&#125;,&quot;fn1&quot;,&#123;w:6.25&#125;,&quot;space&quot;,&#123;w:1.25&#125;,&quot;home&quot;,&#123;w:1.25&#125;,&quot;end&quot;,&#123;w:1.25&#125;,&quot;pgup&quot;,&#123;w:1.25&#125;,&quot;pgdn&quot;]</span><br><span class="line"></span><br><span class="line">第1层</span><br><span class="line">[&quot;~\n`&quot;,&quot;f1&quot;,&quot;f2&quot;,&quot;f3&quot;,&quot;f4&quot;,&quot;f5&quot;,&quot;f6&quot;,&quot;f7&quot;,&quot;f8&quot;,&quot;f9&quot;,&quot;f10&quot;,&quot;f11&quot;,&quot;f12&quot;,&#123;w:2&#125;,&quot;fn2&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;capslock&quot;,&quot;fn11&quot;,&quot;fn12&quot;,&quot;fn13&quot;,&quot;no&quot;,&quot;no&quot;,&quot;pgup&quot;,&quot;no&quot;,&quot;up&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&#123;w:1.5&#125;,&quot;no&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;fn14&quot;,&quot;fn15&quot;,&quot;fn16&quot;,&quot;no&quot;,&quot;no&quot;,&quot;pgdn&quot;,&quot;left&quot;,&quot;down&quot;,&quot;right&quot;,&quot;no&quot;,&quot;no&quot;,&#123;w:2.25&#125;,&quot;menu&quot;],</span><br><span class="line">[&#123;a:7,w:2.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;delete&quot;,&quot;fn17&quot;,&quot;fn18&quot;,&quot;mute&quot;,&quot;home&quot;,&quot;end&quot;,&quot;bs&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&#123;a:7,w:2.75&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;a:4,w:6.25&#125;,&quot;penter&quot;,&#123;w:1.25&#125;,&quot;scrlk&quot;,&#123;w:1.25&#125;,&quot;prtsc&quot;,&#123;w:1.25&#125;,&quot;voldn&quot;,&#123;w:1.25&#125;,&quot;volup&quot;]</span><br><span class="line"></span><br><span class="line">第2层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;fn21&quot;,&quot;fn22&quot;,&quot;fn23&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;fn30&quot;,&quot;fn31&quot;,&#123;a:7,w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:1.5&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.75&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2.25&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2.75&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第3层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;:\n;&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;w&quot;,&quot;y&quot;,&quot;k&quot;,&quot;r&quot;,&quot;d&quot;,&quot;l&quot;,&quot;c&quot;,&quot;?\n/&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;o&quot;,&quot;e&quot;,&quot;i&quot;,&quot;u&quot;,&quot;g&quot;,&quot;h&quot;,&quot;t&quot;,&quot;n&quot;,&quot;s&quot;,&quot;_\n-&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;\&quot;\n&apos;&quot;,&quot;q&quot;,&quot;x&quot;,&quot;j&quot;,&quot;b&quot;,&quot;f&quot;,&quot;m&quot;,&quot;p&quot;,&quot;v&quot;,&quot;z&quot;,&#123;a:7,w:2.75&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第4层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;\&quot;\n&apos;&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;p&quot;,&quot;y&quot;,&quot;f&quot;,&quot;g&quot;,&quot;c&quot;,&quot;r&quot;,&quot;l&quot;,&quot;?\n/&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;o&quot;,&quot;e&quot;,&quot;u&quot;,&quot;i&quot;,&quot;d&quot;,&quot;h&quot;,&quot;t&quot;,&quot;n&quot;,&quot;s&quot;,&quot;_\n-&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;:\n;&quot;,&quot;q&quot;,&quot;j&quot;,&quot;k&quot;,&quot;x&quot;,&quot;b&quot;,&quot;m&quot;,&quot;w&quot;,&quot;v&quot;,&quot;z&quot;,&#123;a:7,w:2.75&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第5层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;q&quot;,&quot;w&quot;,&quot;f&quot;,&quot;p&quot;,&quot;g&quot;,&quot;j&quot;,&quot;l&quot;,&quot;u&quot;,&quot;y&quot;,&quot;:\n;&quot;,&quot;_\n-&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;r&quot;,&quot;s&quot;,&quot;t&quot;,&quot;d&quot;,&quot;h&quot;,&quot;n&quot;,&quot;e&quot;,&quot;i&quot;,&quot;o&quot;,&quot;\&quot;\n&apos;&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;z&quot;,&quot;x&quot;,&quot;c&quot;,&quot;v&quot;,&quot;b&quot;,&quot;k&quot;,&quot;m&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;?\n/&quot;,&#123;a:7,w:2.75&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第6层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;q&quot;,&quot;w&quot;,&quot;e&quot;,&quot;r&quot;,&quot;t&quot;,&quot;y&quot;,&quot;u&quot;,&quot;i&quot;,&quot;o&quot;,&quot;p&quot;,&quot;_\n-&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;s&quot;,&quot;d&quot;,&quot;f&quot;,&quot;g&quot;,&quot;h&quot;,&quot;j&quot;,&quot;k&quot;,&quot;l&quot;,&quot;:\n;&quot;,&quot;\&quot;\n&apos;&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;z&quot;,&quot;x&quot;,&quot;c&quot;,&quot;v&quot;,&quot;b&quot;,&quot;n&quot;,&quot;m&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;?\n/&quot;,&#123;a:7,w:2.75&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第7层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;a:4,w:1.5&#125;,&quot;numlock&quot;,&quot;home&quot;,&quot;up&quot;,&quot;end&quot;,&quot;pgup&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;*&quot;,&quot;/&quot;,&quot;7\nhome&quot;,&quot;8\nup&quot;,&quot;9\npgup&quot;,&#123;w:1.5&#125;,&quot;0\ninsert&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;left&quot;,&quot;down&quot;,&quot;right&quot;,&quot;pgdn&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;+&quot;,&quot;4\nleft&quot;,&quot;5&quot;,&quot;6\nright&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;-&quot;,&quot;1\nend&quot;,&quot;2\ndown&quot;,&quot;3\npgdn&quot;,&#123;w:2.75&#125;,&quot;.\ndelete&quot;],</span><br><span class="line">[&#123;a:7,w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">========【普通模式】========</span><br><span class="line">Fn</span><br><span class="line">Fn1     层操作&gt;瞬时开启&gt;层 1</span><br><span class="line">Fn2     层操作&gt;瞬时开启&gt;层 2</span><br><span class="line">Fn11    组合键&gt;修饰键&gt;lCtrl+S  保存</span><br><span class="line">Fn12    组合键&gt;修饰键&gt;lCtrl+Z  撤销</span><br><span class="line">Fn13    组合键&gt;修饰键&gt;lCtrl+Y  重做</span><br><span class="line">Fn14    组合键&gt;修饰键&gt;lCtrl+V  粘贴</span><br><span class="line">Fn15    组合键&gt;修饰键&gt;lCtrl+X  剪切</span><br><span class="line">Fn16    组合键&gt;修饰键&gt;lCtrl+C  复制</span><br><span class="line">Fn17    组合键&gt;修饰键&gt;lCtrl+F  查找</span><br><span class="line">Fn18    组合键&gt;修饰键&gt;lCtrl+H  替换</span><br><span class="line">Fn21    层操作&gt;开关&gt;层 3</span><br><span class="line">Fn22    层操作&gt;开关&gt;层 4</span><br><span class="line">Fn23    层操作&gt;开关&gt;层 5</span><br><span class="line">Fn30    层操作&gt;开关&gt;层 6</span><br><span class="line">Fn31    层操作&gt;开关&gt;层 7</span><br><span class="line"></span><br><span class="line">LED</span><br><span class="line">Capslock    绑定&gt;无&gt;背光</span><br><span class="line">GPIO0       绑定&gt;无&gt;背光</span><br><span class="line">GPIO1       绑定&gt;无&gt;背光</span><br><span class="line">GPIO2       绑定&gt;无&gt;背光</span><br><span class="line">GPIO3       绑定&gt;无&gt;背光</span><br><span class="line"></span><br><span class="line">Fn Import/Export:</span><br><span class="line">&quot;1&quot;:[&quot;ACTION_LAYER_MOMENTARY&quot;,1],&quot;2&quot;:[&quot;ACTION_LAYER_MOMENTARY&quot;,&quot;2&quot;],&quot;11&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_S&quot;],&quot;12&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_Z&quot;],&quot;13&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_Y&quot;],&quot;14&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_V&quot;],&quot;15&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_X&quot;],&quot;16&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_C&quot;],&quot;17&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_F&quot;],&quot;18&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_H&quot;],&quot;21&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;3&quot;],&quot;22&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;4&quot;],&quot;23&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;5&quot;],&quot;30&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;6&quot;],&quot;31&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;7&quot;]</span><br></pre></td></tr></table></figure>
+<br>
+
+<h6 id="zhvorak-xd64-64-normal"><a href="#zhvorak-xd64-64-normal" class="headerlink" title="zhvorak/xd64/64/normal"></a>zhvorak/xd64/64/normal</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//第0层：正常(zhvorak-xd64)键位</span><br><span class="line">//第1层：f1-f12、menu、capslock、delete、mute、home、end、up、down、left、right、pgup、pgdn、backspace、penter、screenlock、printscreen、voldn、volup、fn11-fn18 shotcuts</span><br><span class="line">//第2层：开启第3、4、5、6、7层的开关键(fn21、fn22、fn23、fn30、fn31)</span><br><span class="line">//第3层：wkrdlc-main-zone</span><br><span class="line">//第4层：dvorak-main-zone</span><br><span class="line">//第5层：colmak-main-zone</span><br><span class="line">//第6层：qwerty-main-zone</span><br><span class="line">//第7层：主键区左侧替换为numlock、home、end、up、down、left、right、pgup、pgdn，右下角替换为双排数字键区</span><br><span class="line"></span><br><span class="line">通常</span><br><span class="line">键盘     GH60(RevA/B/C)</span><br><span class="line"></span><br><span class="line">层</span><br><span class="line">层模式   标准</span><br><span class="line">层数     8</span><br><span class="line"></span><br><span class="line">第0层</span><br><span class="line">[&quot;esc&quot;,&quot;!\n1&quot;,&quot;@\n2&quot;,&quot;#\n3&quot;,&quot;$\n4&quot;,&quot;%\n5&quot;,&quot;^\n6&quot;,&quot;&amp;\n7&quot;,&quot;*\n8&quot;,&quot;(\n9&quot;,&quot;)\n0&quot;,&quot;&#123;\n[&quot;,&quot;&#125;\n]&quot;,&#123;w:2&#125;,&quot;backspace&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;tab&quot;,&quot;:\n;&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;w&quot;,&quot;y&quot;,&quot;k&quot;,&quot;r&quot;,&quot;d&quot;,&quot;l&quot;,&quot;c&quot;,&quot;?\n/&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;w:1.75&#125;,&quot;ctrl&quot;,&quot;a&quot;,&quot;o&quot;,&quot;e&quot;,&quot;i&quot;,&quot;u&quot;,&quot;g&quot;,&quot;h&quot;,&quot;t&quot;,&quot;n&quot;,&quot;s&quot;,&quot;_\n-&quot;,&#123;w:2.25&#125;,&quot;enter&quot;],</span><br><span class="line">[&#123;w:2&#125;,&quot;shift&quot;,&quot;\&quot;\n&apos;&quot;,&quot;q&quot;,&quot;x&quot;,&quot;j&quot;,&quot;b&quot;,&quot;f&quot;,&quot;m&quot;,&quot;p&quot;,&quot;v&quot;,&quot;z&quot;,&quot;home&quot;,&quot;up&quot;,&quot;end&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;win&quot;,&#123;w:1.25&#125;,&quot;alt&quot;,&#123;w:1.25&#125;,&quot;fn1&quot;,&#123;w:6.25&#125;,&quot;space&quot;,&quot;ins&quot;,&quot;del&quot;,&quot;left&quot;,&quot;down&quot;,&quot;right&quot;]</span><br><span class="line"></span><br><span class="line">第1层</span><br><span class="line">[&quot;~\n`&quot;,&quot;f1&quot;,&quot;f2&quot;,&quot;f3&quot;,&quot;f4&quot;,&quot;f5&quot;,&quot;f6&quot;,&quot;f7&quot;,&quot;f8&quot;,&quot;f9&quot;,&quot;f10&quot;,&quot;f11&quot;,&quot;f12&quot;,&#123;w:2&#125;,&quot;fn2&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;capslock&quot;,&quot;fn11&quot;,&quot;fn12&quot;,&quot;fn13&quot;,&quot;no&quot;,&quot;no&quot;,&quot;pgup&quot;,&quot;no&quot;,&quot;up&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&#123;w:1.5&#125;,&quot;no&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;fn14&quot;,&quot;fn15&quot;,&quot;fn16&quot;,&quot;no&quot;,&quot;no&quot;,&quot;pgdn&quot;,&quot;left&quot;,&quot;down&quot;,&quot;right&quot;,&quot;no&quot;,&quot;no&quot;,&#123;w:2.25&#125;,&quot;menu&quot;],</span><br><span class="line">[&#123;a:7,w:2&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;delete&quot;,&quot;fn17&quot;,&quot;fn18&quot;,&quot;mute&quot;,&quot;home&quot;,&quot;end&quot;,&quot;bs&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&#123;a:7&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;pgup&quot;,&#123;a:7&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;a:4,w:6.25&#125;,&quot;penter&quot;,&quot;scrlk&quot;,&quot;prtsc&quot;,&quot;voldn&quot;,&quot;pgdn&quot;,&quot;volup&quot;]</span><br><span class="line"></span><br><span class="line">第2层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;fn21&quot;,&quot;fn22&quot;,&quot;fn23&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;fn30&quot;,&quot;fn31&quot;,&#123;a:7,w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:1.5&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.75&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第3层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;:\n;&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;w&quot;,&quot;y&quot;,&quot;k&quot;,&quot;r&quot;,&quot;d&quot;,&quot;l&quot;,&quot;c&quot;,&quot;?\n/&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;o&quot;,&quot;e&quot;,&quot;i&quot;,&quot;u&quot;,&quot;g&quot;,&quot;h&quot;,&quot;t&quot;,&quot;n&quot;,&quot;s&quot;,&quot;_\n-&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;\&quot;\n&apos;&quot;,&quot;q&quot;,&quot;x&quot;,&quot;j&quot;,&quot;b&quot;,&quot;f&quot;,&quot;m&quot;,&quot;p&quot;,&quot;v&quot;,&quot;z&quot;,&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第4层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;\&quot;\n&apos;&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;p&quot;,&quot;y&quot;,&quot;f&quot;,&quot;g&quot;,&quot;c&quot;,&quot;r&quot;,&quot;l&quot;,&quot;?\n/&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;o&quot;,&quot;e&quot;,&quot;u&quot;,&quot;i&quot;,&quot;d&quot;,&quot;h&quot;,&quot;t&quot;,&quot;n&quot;,&quot;s&quot;,&quot;_\n-&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;:\n;&quot;,&quot;q&quot;,&quot;j&quot;,&quot;k&quot;,&quot;x&quot;,&quot;b&quot;,&quot;m&quot;,&quot;w&quot;,&quot;v&quot;,&quot;z&quot;,&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第5层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;q&quot;,&quot;w&quot;,&quot;f&quot;,&quot;p&quot;,&quot;g&quot;,&quot;j&quot;,&quot;l&quot;,&quot;u&quot;,&quot;y&quot;,&quot;:\n;&quot;,&quot;_\n-&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;r&quot;,&quot;s&quot;,&quot;t&quot;,&quot;d&quot;,&quot;h&quot;,&quot;n&quot;,&quot;e&quot;,&quot;i&quot;,&quot;o&quot;,&quot;\&quot;\n&apos;&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;z&quot;,&quot;x&quot;,&quot;c&quot;,&quot;v&quot;,&quot;b&quot;,&quot;k&quot;,&quot;m&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;?\n/&quot;,&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第6层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;q&quot;,&quot;w&quot;,&quot;e&quot;,&quot;r&quot;,&quot;t&quot;,&quot;y&quot;,&quot;u&quot;,&quot;i&quot;,&quot;o&quot;,&quot;p&quot;,&quot;_\n-&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;s&quot;,&quot;d&quot;,&quot;f&quot;,&quot;g&quot;,&quot;h&quot;,&quot;j&quot;,&quot;k&quot;,&quot;l&quot;,&quot;:\n;&quot;,&quot;\&quot;\n&apos;&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;z&quot;,&quot;x&quot;,&quot;c&quot;,&quot;v&quot;,&quot;b&quot;,&quot;n&quot;,&quot;m&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;?\n/&quot;,&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第7层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;home&quot;,&quot;up&quot;,&quot;end&quot;,&quot;pgup&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&#123;w:1.5&#125;,&quot;no&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;left&quot;,&quot;down&quot;,&quot;right&quot;,&quot;pgdn&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;1\nend&quot;,&quot;2\ndown&quot;,&quot;3\npgdn&quot;,&quot;4\nleft&quot;,&quot;5&quot;],</span><br><span class="line">[&#123;a:7,w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;6\nright&quot;,&quot;7\nhome&quot;,&quot;8\nup&quot;,&quot;9\npgup&quot;,&quot;0\ninsert&quot;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">========【普通模式】========</span><br><span class="line">Fn</span><br><span class="line">Fn1     层操作&gt;瞬时开启&gt;层 1</span><br><span class="line">Fn2     层操作&gt;瞬时开启&gt;层 2</span><br><span class="line">Fn11    组合键&gt;修饰键&gt;lCtrl+S  保存</span><br><span class="line">Fn12    组合键&gt;修饰键&gt;lCtrl+Z  撤销</span><br><span class="line">Fn13    组合键&gt;修饰键&gt;lCtrl+Y  重做</span><br><span class="line">Fn14    组合键&gt;修饰键&gt;lCtrl+V  粘贴</span><br><span class="line">Fn15    组合键&gt;修饰键&gt;lCtrl+X  剪切</span><br><span class="line">Fn16    组合键&gt;修饰键&gt;lCtrl+C  复制</span><br><span class="line">Fn17    组合键&gt;修饰键&gt;lCtrl+F  查找</span><br><span class="line">Fn18    组合键&gt;修饰键&gt;lCtrl+H  替换</span><br><span class="line">Fn21    层操作&gt;开关&gt;层 3</span><br><span class="line">Fn22    层操作&gt;开关&gt;层 4</span><br><span class="line">Fn23    层操作&gt;开关&gt;层 5</span><br><span class="line">Fn30    层操作&gt;开关&gt;层 6</span><br><span class="line">Fn31    层操作&gt;开关&gt;层 7</span><br><span class="line"></span><br><span class="line">LED</span><br><span class="line">Capslock    绑定&gt;无&gt;背光</span><br><span class="line">GPIO0       绑定&gt;无&gt;背光</span><br><span class="line">GPIO1       绑定&gt;无&gt;背光</span><br><span class="line">GPIO2       绑定&gt;无&gt;背光</span><br><span class="line">GPIO3       绑定&gt;无&gt;背光</span><br><span class="line"></span><br><span class="line">Fn Import/Export:</span><br><span class="line">&quot;1&quot;:[&quot;ACTION_LAYER_MOMENTARY&quot;,1],&quot;2&quot;:[&quot;ACTION_LAYER_MOMENTARY&quot;,&quot;2&quot;],&quot;11&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_S&quot;],&quot;12&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_Z&quot;],&quot;13&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_Y&quot;],&quot;14&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_V&quot;],&quot;15&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_X&quot;],&quot;16&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_C&quot;],&quot;17&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_F&quot;],&quot;18&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_H&quot;],&quot;21&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;3&quot;],&quot;22&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;4&quot;],&quot;23&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;5&quot;],&quot;30&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;6&quot;],&quot;31&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;7&quot;]</span><br></pre></td></tr></table></figure>
+<br>
+
+<h6 id="zhvorak-xd64-64-gamemode"><a href="#zhvorak-xd64-64-gamemode" class="headerlink" title="zhvorak/xd64/64/gamemode"></a>zhvorak/xd64/64/gamemode</h6><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//第0层：正常(zhvorak-xd64)键位</span><br><span class="line">//第1层：f1-f12、menu、capslock、delete、mute、home、end、up、down、left、right、pgup、pgdn、backspace、penter、screenlock、printscreen、voldn、volup、fn11-fn18 shotcuts</span><br><span class="line">//第2层：开启第3、4、5、6、7层的开关键(fn21、fn22、fn23、fn30、fn31)</span><br><span class="line">//第3层：wkrdlc-main-zone + fn3</span><br><span class="line">//第4层：dvorak-main-zone</span><br><span class="line">//第5层：colmak-main-zone</span><br><span class="line">//第6层：qwerty-main-zone + fn6</span><br><span class="line">//第7层：capslock, rightcontrol</span><br><span class="line"></span><br><span class="line">通常</span><br><span class="line">键盘     GH60(RevA/B/C)</span><br><span class="line"></span><br><span class="line">层</span><br><span class="line">层模式   标准</span><br><span class="line">层数     8</span><br><span class="line"></span><br><span class="line">第0层</span><br><span class="line">[&quot;esc&quot;,&quot;!\n1&quot;,&quot;@\n2&quot;,&quot;#\n3&quot;,&quot;$\n4&quot;,&quot;%\n5&quot;,&quot;^\n6&quot;,&quot;&amp;\n7&quot;,&quot;*\n8&quot;,&quot;(\n9&quot;,&quot;)\n0&quot;,&quot;&#123;\n[&quot;,&quot;&#125;\n]&quot;,&#123;w:2&#125;,&quot;backspace&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;tab&quot;,&quot;:\n;&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;w&quot;,&quot;y&quot;,&quot;k&quot;,&quot;r&quot;,&quot;d&quot;,&quot;l&quot;,&quot;c&quot;,&quot;?\n/&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;w:1.75&#125;,&quot;ctrl&quot;,&quot;a&quot;,&quot;o&quot;,&quot;e&quot;,&quot;i&quot;,&quot;u&quot;,&quot;g&quot;,&quot;h&quot;,&quot;t&quot;,&quot;n&quot;,&quot;s&quot;,&quot;_\n-&quot;,&#123;w:2.25&#125;,&quot;enter&quot;],</span><br><span class="line">[&#123;w:2&#125;,&quot;shift&quot;,&quot;\&quot;\n&apos;&quot;,&quot;q&quot;,&quot;x&quot;,&quot;j&quot;,&quot;b&quot;,&quot;f&quot;,&quot;m&quot;,&quot;p&quot;,&quot;v&quot;,&quot;z&quot;,&quot;home&quot;,&quot;up&quot;,&quot;end&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;win&quot;,&#123;w:1.25&#125;,&quot;alt&quot;,&#123;w:1.25&#125;,&quot;fn1&quot;,&#123;w:6.25&#125;,&quot;space&quot;,&quot;ins&quot;,&quot;del&quot;,&quot;left&quot;,&quot;down&quot;,&quot;right&quot;]</span><br><span class="line"></span><br><span class="line">第1层</span><br><span class="line">[&quot;~\n`&quot;,&quot;f1&quot;,&quot;f2&quot;,&quot;f3&quot;,&quot;f4&quot;,&quot;f5&quot;,&quot;f6&quot;,&quot;f7&quot;,&quot;f8&quot;,&quot;f9&quot;,&quot;f10&quot;,&quot;f11&quot;,&quot;f12&quot;,&#123;w:2&#125;,&quot;fn2&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;capslock&quot;,&quot;fn11&quot;,&quot;fn12&quot;,&quot;fn13&quot;,&quot;no&quot;,&quot;no&quot;,&quot;pgup&quot;,&quot;no&quot;,&quot;up&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&#123;w:1.5&#125;,&quot;no&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;fn14&quot;,&quot;fn15&quot;,&quot;fn16&quot;,&quot;no&quot;,&quot;no&quot;,&quot;pgdn&quot;,&quot;left&quot;,&quot;down&quot;,&quot;right&quot;,&quot;no&quot;,&quot;no&quot;,&#123;w:2.25&#125;,&quot;menu&quot;],</span><br><span class="line">[&#123;a:7,w:2&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;delete&quot;,&quot;fn17&quot;,&quot;fn18&quot;,&quot;mute&quot;,&quot;home&quot;,&quot;end&quot;,&quot;bs&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&#123;a:7&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;pgup&quot;,&#123;a:7&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;a:4,w:6.25&#125;,&quot;penter&quot;,&quot;scrlk&quot;,&quot;prtsc&quot;,&quot;voldn&quot;,&quot;pgdn&quot;,&quot;volup&quot;]</span><br><span class="line"></span><br><span class="line">第2层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;fn21&quot;,&quot;fn22&quot;,&quot;fn23&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;no&quot;,&quot;fn30&quot;,&quot;fn31&quot;,&#123;a:7,w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:1.5&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.75&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第3层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;:\n;&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;w&quot;,&quot;y&quot;,&quot;k&quot;,&quot;r&quot;,&quot;d&quot;,&quot;l&quot;,&quot;c&quot;,&quot;?\n/&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;o&quot;,&quot;e&quot;,&quot;i&quot;,&quot;u&quot;,&quot;g&quot;,&quot;h&quot;,&quot;t&quot;,&quot;n&quot;,&quot;s&quot;,&quot;_\n-&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;\&quot;\n&apos;&quot;,&quot;q&quot;,&quot;x&quot;,&quot;j&quot;,&quot;b&quot;,&quot;f&quot;,&quot;m&quot;,&quot;p&quot;,&quot;v&quot;,&quot;z&quot;,&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;fn3&quot;,&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第4层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;\&quot;\n&apos;&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;p&quot;,&quot;y&quot;,&quot;f&quot;,&quot;g&quot;,&quot;c&quot;,&quot;r&quot;,&quot;l&quot;,&quot;?\n/&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;o&quot;,&quot;e&quot;,&quot;u&quot;,&quot;i&quot;,&quot;d&quot;,&quot;h&quot;,&quot;t&quot;,&quot;n&quot;,&quot;s&quot;,&quot;_\n-&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;:\n;&quot;,&quot;q&quot;,&quot;j&quot;,&quot;k&quot;,&quot;x&quot;,&quot;b&quot;,&quot;m&quot;,&quot;w&quot;,&quot;v&quot;,&quot;z&quot;,&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第5层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;q&quot;,&quot;w&quot;,&quot;f&quot;,&quot;p&quot;,&quot;g&quot;,&quot;j&quot;,&quot;l&quot;,&quot;u&quot;,&quot;y&quot;,&quot;:\n;&quot;,&quot;_\n-&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;r&quot;,&quot;s&quot;,&quot;t&quot;,&quot;d&quot;,&quot;h&quot;,&quot;n&quot;,&quot;e&quot;,&quot;i&quot;,&quot;o&quot;,&quot;\&quot;\n&apos;&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;z&quot;,&quot;x&quot;,&quot;c&quot;,&quot;v&quot;,&quot;b&quot;,&quot;k&quot;,&quot;m&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;?\n/&quot;,&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第6层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;q&quot;,&quot;w&quot;,&quot;e&quot;,&quot;r&quot;,&quot;t&quot;,&quot;y&quot;,&quot;u&quot;,&quot;i&quot;,&quot;o&quot;,&quot;p&quot;,&quot;_\n-&quot;,&quot;+\n=&quot;,&#123;w:1.5&#125;,&quot;|\n\\&quot;],</span><br><span class="line">[&#123;a:7,w:1.75&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;a&quot;,&quot;s&quot;,&quot;d&quot;,&quot;f&quot;,&quot;g&quot;,&quot;h&quot;,&quot;j&quot;,&quot;k&quot;,&quot;l&quot;,&quot;:\n;&quot;,&quot;\&quot;\n&apos;&quot;,&#123;a:7,w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;z&quot;,&quot;x&quot;,&quot;c&quot;,&quot;v&quot;,&quot;b&quot;,&quot;n&quot;,&quot;m&quot;,&quot;&lt;\n,&quot;,&quot;&gt;\n.&quot;,&quot;?\n/&quot;,&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:1.25&#125;,&quot;&quot;,&#123;w:6.25&#125;,&quot;&quot;,&#123;a:4&#125;,&quot;fn6&quot;,&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line">第7层</span><br><span class="line">[&#123;a:7&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.5&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:1.5&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:1.75&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&#123;w:2.25&#125;,&quot;&quot;],</span><br><span class="line">[&#123;w:2&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;],</span><br><span class="line">[&#123;a:4,w:1.25&#125;,&quot;capslock&quot;,&#123;a:7,w:1.25&#125;,&quot;&quot;,&#123;a:4,w:1.25&#125;,&quot;rctrl&quot;,&#123;a:7,w:6.25&#125;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;,&quot;&quot;]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">========【游戏模式】========</span><br><span class="line">Fn</span><br><span class="line">Fn1     层操作&gt;瞬时开启&gt;层 1</span><br><span class="line">Fn2     层操作&gt;瞬时开启&gt;层 2</span><br><span class="line">Fn3     层操作&gt;开关&gt;层 7</span><br><span class="line">Fn6     层操作&gt;开关&gt;层 7</span><br><span class="line">Fn11    组合键&gt;修饰键&gt;lCtrl+S  保存</span><br><span class="line">Fn12    组合键&gt;修饰键&gt;lCtrl+Z  撤销</span><br><span class="line">Fn13    组合键&gt;修饰键&gt;lCtrl+Y  重做</span><br><span class="line">Fn14    组合键&gt;修饰键&gt;lCtrl+V  粘贴</span><br><span class="line">Fn15    组合键&gt;修饰键&gt;lCtrl+X  剪切</span><br><span class="line">Fn16    组合键&gt;修饰键&gt;lCtrl+C  复制</span><br><span class="line">Fn17    组合键&gt;修饰键&gt;lCtrl+F  查找</span><br><span class="line">Fn18    组合键&gt;修饰键&gt;lCtrl+H  替换</span><br><span class="line">Fn21    层操作&gt;开关&gt;层 3</span><br><span class="line">Fn22    层操作&gt;开关&gt;层 4</span><br><span class="line">Fn23    层操作&gt;开关&gt;层 5</span><br><span class="line">Fn30    层操作&gt;开关&gt;层 6</span><br><span class="line">Fn31    无</span><br><span class="line"></span><br><span class="line">LED</span><br><span class="line">Capslock    绑定&gt;无&gt;背光</span><br><span class="line">GPIO0       绑定&gt;无&gt;背光</span><br><span class="line">GPIO1       绑定&gt;无&gt;背光</span><br><span class="line">GPIO2       绑定&gt;无&gt;背光</span><br><span class="line">GPIO3       绑定&gt;无&gt;背光</span><br><span class="line"></span><br><span class="line">Fn Import/Export:</span><br><span class="line">&quot;1&quot;:[&quot;ACTION_LAYER_MOMENTARY&quot;,1],&quot;2&quot;:[&quot;ACTION_LAYER_MOMENTARY&quot;,&quot;2&quot;],&quot;3&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;7&quot;],&quot;6&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;7&quot;],&quot;11&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_S&quot;],&quot;12&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_Z&quot;],&quot;13&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_Y&quot;],&quot;14&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_V&quot;],&quot;15&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_X&quot;],&quot;16&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_C&quot;],&quot;17&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_F&quot;],&quot;18&quot;:[&quot;ACTION_MODS_KEY&quot;,&quot;LR_LEFT&quot;,[&quot;MOD_CTL&quot;],&quot;KC_H&quot;],&quot;21&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;3&quot;],&quot;22&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;4&quot;],&quot;23&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;5&quot;],&quot;30&quot;:[&quot;ACTION_LAYER_TOGGLE&quot;,&quot;6&quot;],&quot;31&quot;:[&quot;ACTION_NO&quot;]</span><br></pre></td></tr></table></figure>
+
+<p>普通模式和游戏模式的区别是：游戏模式在进入第 3 层或者第 6 层时可以把 win, fn 键映射为 capslock, rightcontrol 以防止误触 win 键切出游戏。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>文章作者： </strong>硫及銅
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章鏈接：</strong>
+    <a href="https://sulfurandcu.github.io/mechanical-keyboard.html" title="客製化機械鍵盤">https://sulfurandcu.github.io/mechanical-keyboard.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>文章採用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-SA</a> 許可協議　轉載請註明出處
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/punctuation-and-character-encoding.html" rel="prev" title="排版、標點與字符編碼">
+      <i class="fa fa-chevron-left"></i> 排版、標點與字符編碼
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/coding-style.html" rel="next" title="代碼風格及規範">
+      代碼風格及規範 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          站點概覽
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#瞎扯"><span class="nav-text">瞎扯</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新布局新问题和新方案"><span class="nav-text">新布局新问题和新方案</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#机械键盘具体制作步骤"><span class="nav-text">机械键盘具体制作步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#准备工作"><span class="nav-text">准备工作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#材料购置"><span class="nav-text">材料购置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#组装焊接"><span class="nav-text">组装焊接</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#生成键表"><span class="nav-text">生成键表</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#程序烧录"><span class="nav-text">程序烧录</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#测试使用"><span class="nav-text">测试使用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#我的配列"><span class="nav-text">我的配列</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#qwerty-poker-61"><span class="nav-text">qwerty/poker/61</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#zhvorak-poker-61"><span class="nav-text">zhvorak/poker/61</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#zhvorak-xd64-64-normal"><span class="nav-text">zhvorak/xd64/64/normal</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#zhvorak-xd64-64-gamemode"><span class="nav-text">zhvorak/xd64/64/gamemode</span></a></li></ol></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">硫及銅</p>
+  <div class="site-description" itemprop="description">枸杞養生  亦能續命</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">類別</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SulfurandCu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SulfurandCu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:u.inkyr@gmail.com" title="E-Mail → mailto:u.inkyr@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SulfurandCu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source Han Serif TC:300,300italic,400,400italic,700,700italic|EB Garamond:300,300italic,400,400italic,700,700italic|Iosevka Term Curly Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sulfurandcu.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="我司代碼風格（規範）如下，參考源包括 linux 內核代碼風格和 Google 開源項目風格指南。 在談代碼風格之前先簡單說一下「編碼風格」。這裏以 Keil 的 MDK 集成開發環境爲例，在新建一個頭文件或是源文件時，有兩種常用方式：一是在 Keil MDK 中直接新建一個.h.c文件，修改並存儲；二是在工程目錄下新建一個文本文件，然後重命名爲.h.c文件。衆所周知 Keil MDK 的默認編碼">
+<meta property="og:type" content="article">
+<meta property="og:title" content="代碼風格及規範">
+<meta property="og:url" content="https:&#x2F;&#x2F;sulfurandcu.github.io&#x2F;coding-style.html">
+<meta property="og:site_name" content="ㄅㄆㄇㄈ">
+<meta property="og:description" content="我司代碼風格（規範）如下，參考源包括 linux 內核代碼風格和 Google 開源項目風格指南。 在談代碼風格之前先簡單說一下「編碼風格」。這裏以 Keil 的 MDK 集成開發環境爲例，在新建一個頭文件或是源文件時，有兩種常用方式：一是在 Keil MDK 中直接新建一個.h.c文件，修改並存儲；二是在工程目錄下新建一個文本文件，然後重命名爲.h.c文件。衆所周知 Keil MDK 的默認編碼">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-03-19T14:57:48.775Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://sulfurandcu.github.io/coding-style.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>代碼風格及規範 | ㄅㄆㄇㄈ</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ㄅㄆㄇㄈ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">bopomofo</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>在下</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>類別</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-th"></i>標籤</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sulfurandcu.github.io/coding-style.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="硫及銅">
+      <meta itemprop="description" content="枸杞養生  亦能續命">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㄅㄆㄇㄈ">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          代碼風格及規範
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2019-12-18 00:00:00" itemprop="dateCreated datePublished" datetime="2019-12-18T00:00:00+08:00">2019-12-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-03-19 22:57:48" itemprop="dateModified" datetime="2020-03-19T22:57:48+08:00">2020-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BB%9F%E4%BB%B6%E7%9B%B8%E9%97%9C/" itemprop="url" rel="index"><span itemprop="name">軟件相關</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>我司代碼風格（規範）如下，參考源包括 linux 內核代碼風格和 Google 開源項目風格指南。</p>
+<p>在談代碼風格之前先簡單說一下「編碼風格」。這裏以 Keil 的 MDK 集成開發環境爲例，在新建一個頭文件或是源文件時，有兩種常用方式：一是在 Keil MDK 中直接新建一個.h.c文件，修改並存儲；二是在工程目錄下新建一個文本文件，然後重命名爲.h.c文件。衆所周知 Keil MDK 的默認編碼格式是 ANSI 格式。在 Windows 10 版本 1903 發佈之前，操作系統自帶的記事本使用的也是 ANSI 格式。直到版本 1903 微軟才將記事本的默認編碼格式改爲 UTF-8 格式。顯然，如果不是特意設置的話，兩種方式建立的文件的編碼格式大概率是 ANSI 格式。而 Keil MDK 中的 ANSI 格式對中文輸入極不友好，中文輸入時敲擊退格鍵會出現問號（必須敲擊兩次退格才能刪除一個漢字），因此這裏建議工程中所有源碼文件的編碼格式統一使用 UTF-8 格式。</p>
+<p>施工中…不定期更新</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+
+<h3 id="註釋規範"><a href="#註釋規範" class="headerlink" title="註釋規範"></a>註釋規範</h3><p>註釋風格要保持統一。註釋建議使用中文，除非能夠非常準確地用英文表述。</p>
+<p>註釋包括「註釋說明（名詞）」和「註釋代碼（動詞）」。<br>註釋說明（名詞）包括文件註釋，類型註釋、類註釋、成員註釋，變量註釋，函數註釋，語句註釋。語句註釋又可分爲「行代碼註釋」和「段代碼註釋」。<br>註釋代碼（動詞）包括註釋單行代碼，註釋多行代碼，註釋整段代碼。</p>
+<p>使用<code>/*  */</code>註釋「註釋說明」，使用<code>//</code>註釋單行代碼和多行代碼（使用快捷鍵快速註釋以及反向註釋），使用<code>#if 0</code>註釋掉整段代碼。禁止使用<code>/*  */</code>註釋多行代碼或者整段代碼。</p>
+<p>使用快捷鍵註釋的優點：絕大部分IDE的快捷鍵註釋是將<code>//</code>加在各行行首，這樣當製表符尺寸大於 2 時是不會影響代碼美觀性的。並且<code>//</code>不會現註釋嵌套的問題。</p>
+<h4 id="文件註釋－頭文件"><a href="#文件註釋－頭文件" class="headerlink" title="文件註釋－頭文件"></a>文件註釋－頭文件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">大陸簡體</span><br><span class="line">/**</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * copyright © 2020 sulfurandcu. all rights reserved.</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * 文件名称 :  main.h</span><br><span class="line"> * 当前版本 :  1.0</span><br><span class="line"> * 建立日期 :  2020-01-01</span><br><span class="line"> * 作    者 :  sulfurandcu : u.inkyr@gmail.com</span><br><span class="line"> * 修改记录 :</span><br><span class="line"> *             版本      日期          作者                说明</span><br><span class="line"> *             ####      ####          ####                ####</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * 简要说明 :  在这里说明该文件的依赖关系。</span><br><span class="line"> *</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">臺灣正體</span><br><span class="line">/**</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * copyright © 2020 sulfurandcu. all rights reserved.</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * 文件名稱 :  main.h</span><br><span class="line"> * 當前版本 :  1.0</span><br><span class="line"> * 建立日期 :  2020-01-01</span><br><span class="line"> * 作    者 :  sulfurandcu : u.inkyr@gmail.com</span><br><span class="line"> * 修改記錄 :</span><br><span class="line"> *             版本      日期          作者                說明</span><br><span class="line"> *             ####      ####          ####                ####</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * 簡要說明 :  在這裏說明該文件的依賴關係。</span><br><span class="line"> *</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h4 id="文件註釋－源文件"><a href="#文件註釋－源文件" class="headerlink" title="文件註釋－源文件"></a>文件註釋－源文件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">大陸簡體</span><br><span class="line">/**</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * copyright © 2020 sulfurandcu. all rights reserved.</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * 文件名称 :  main.c</span><br><span class="line"> * 当前版本 :  1.0</span><br><span class="line"> * 建立日期 :  2020-01-01</span><br><span class="line"> * 作    者 :  sulfurandcu : u.inkyr@gmail.com</span><br><span class="line"> * 修改记录 :</span><br><span class="line"> *             版本      日期          作者                说明</span><br><span class="line"> *             ####      ####          ####                ####</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * 简要说明 :  在这里简要说明该模块的功能。</span><br><span class="line"> *</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">臺灣正體</span><br><span class="line">/**</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * copyright © 2020 sulfurandcu. all rights reserved.</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * 文件名稱 :  main.c</span><br><span class="line"> * 當前版本 :  1.0</span><br><span class="line"> * 建立日期 :  2020-01-01</span><br><span class="line"> * 作    者 :  sulfurandcu : u.inkyr@gmail.com</span><br><span class="line"> * 修改記錄 :</span><br><span class="line"> *             版本      日期          作者                說明</span><br><span class="line"> *             ####      ####          ####                ####</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * 簡要說明 :  在這裏簡要說明該模塊的功能。</span><br><span class="line"> *</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
+
+<h4 id="類型註釋"><a href="#類型註釋" class="headerlink" title="類型註釋"></a>類型註釋</h4><p>結構、聯合、枚舉等類型的聲明如果不是充分自註釋的，在聲明時必須加以註釋說明。</p>
+<h4 id="變量註釋"><a href="#變量註釋" class="headerlink" title="變量註釋"></a>變量註釋</h4><p>所有有物理含義的變量、常量、宏定義，如果其命名不是充分自註釋的，在聲明時必須加以註釋說明。全局變量要有詳細的註釋來說明其含義及用途。</p>
+<h4 id="函數註釋"><a href="#函數註釋" class="headerlink" title="函數註釋"></a>函數註釋</h4><p>在註釋裏說明你的代碼做了什麼而不是如何做的，如果能加上爲什麼要這麼做會更好。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">大陸簡體</span><br><span class="line">/*</span><br><span class="line">********************************************************************************</span><br><span class="line">* 函数功能 :  简要描述函数功能</span><br><span class="line">* 输入参数 :  parameter_i</span><br><span class="line">* 输出参数 :  parameter_o</span><br><span class="line">* 错误代码 :  error_no</span><br><span class="line">* 编写日期 :  2020-01-01 sulfurandcu : u.inkyr@gmail.com</span><br><span class="line">* 修改记录 :  2020-01-05 author_name : username@email.com  description :</span><br><span class="line">********************************************************************************</span><br><span class="line">* 函数说明 :  在这里详细说明该函数的功能。</span><br><span class="line">*</span><br><span class="line">********************************************************************************</span><br><span class="line">*/</span><br><span class="line"></span><br><span class="line">臺灣正體</span><br><span class="line">/*</span><br><span class="line">********************************************************************************</span><br><span class="line">* 函數功能 :  簡要描述函數功能</span><br><span class="line">* 輸入參數 :  parameter_i</span><br><span class="line">* 輸出參數 :  parameter_o</span><br><span class="line">* 錯誤代碼 :  error_no</span><br><span class="line">* 編寫日期 :  2020-01-01 sulfurandcu : u.inkyr@gmail.com</span><br><span class="line">* 修改記錄 :  2020-01-05 author_name : username@email.com  description :</span><br><span class="line">********************************************************************************</span><br><span class="line">* 函數說明 :  在這裏詳細說明該函數的功能。</span><br><span class="line">*</span><br><span class="line">********************************************************************************</span><br><span class="line">*/</span><br></pre></td></tr></table></figure>
+
+<h3 id="基本格式"><a href="#基本格式" class="headerlink" title="基本格式"></a>基本格式</h3><h4 id="製表符-vs-空格"><a href="#製表符-vs-空格" class="headerlink" title="製表符 vs 空格"></a>製表符 vs 空格</h4><p><strong>總述</strong></p>
+<p>古蘭經第 404 章第七節規定：用製表符縮進，用空格對齊。</p>
+<p><strong>說明</strong></p>
+<p>關於製表符和空格的聖戰由來已久，具體起源於何時已不可考，但是我爺爺的爺爺曾經告訴我：上古時期，因華夏、東夷兩大集團對縮進方式無法達成一致，華夏集團遂派有熊氏黃帝與神農氏炎帝向九黎族的蚩尤發起征討，兩大集團交戰於涿鹿之野，這就是著名的涿鹿之戰，而蚩尤便是那個使用製表符對齊的異端。從那以後，炎黃子孫們便世世代代恪守「製表符僅用於縮進，空格僅用於對齊」的祖訓。<br>這種方式可以兼顧多種縮進風格。並且在提交代碼時，能夠很容易地將使用製表符縮進的代碼轉換成使用空格縮進的代碼。不過需要注意的是，將製表符轉換成空格是可控、可預期的，反之則不然。使用空格來縮進或對齊是可以容忍的，而使用製表符來對齊則是無法容忍的。倘若您非要將製表符用來對齊，那麼我們建議您找伊拉克和大敘利亞伊斯蘭國人民聊一聊。</p>
+<p><strong>例子</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void main(void)</span><br><span class="line">&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		function_1();</span><br><span class="line">		function_2_is_vely_vely_important();</span><br><span class="line">		...</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">return_type really_really_really_long_function_name(type par_name_1,</span><br><span class="line">                                                    type par_name_2,</span><br><span class="line">                                                    type par_name_3)&#123;</span><br><span class="line">	do_something;</span><br><span class="line">	return xxx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="行長度"><a href="#行長度" class="headerlink" title="行長度"></a>行長度</h4><p><strong>總述</strong></p>
+<p>每一行的代碼長度限制爲 <strong>80</strong> 個字符。</p>
+<p><strong>說明</strong></p>
+<p>按照該條規則對註釋、代碼進行斷行可能會造成其可讀性降低，此時單行可以超過 80 個字符。例如，帶有命令示例或 URL 的行。</p>
+<h4 id="大括號"><a href="#大括號" class="headerlink" title="大括號"></a>大括號</h4><p>把起始大括號放在行尾，把結束大括號放在行首，例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (x is true) &#123;</span><br><span class="line">	we do y</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>但是函數例外，函數的起始大括號放置與下一行的開頭，例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">int function(int x)</span><br><span class="line">&#123;</span><br><span class="line">	body of function</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>注意結束大括號獨自佔據一行，除非它後面跟着同一個語句的剩餘部分，也就是 do 語句中的 “while” 或者 if 語句中的 “else”，像這樣：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">do &#123;</span><br><span class="line">	body of do-loop</span><br><span class="line">&#125; while (condition);</span><br></pre></td></tr></table></figure>
+<p>和</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (x == y) &#123;</span><br><span class="line">	do a</span><br><span class="line">&#125; else if (x &gt; y) &#123;</span><br><span class="line">	do b</span><br><span class="line">&#125; else &#123;</span><br><span class="line">	do c</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>當只有一個單獨的語句的時候，不用加不必要的大括號，例如：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (condition)</span><br><span class="line">	do();</span><br></pre></td></tr></table></figure>
+<p>和</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (condition)</span><br><span class="line">	do_this();</span><br><span class="line">else</span><br><span class="line">	do_that();</span><br></pre></td></tr></table></figure>
+
+<p>但這並不適用於只有一個條件分支是單語句的情況，這時所有分支都要使用大括號：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (condition) &#123;</span><br><span class="line">	do_this();</span><br><span class="line">	do_that();</span><br><span class="line">&#125; else &#123;</span><br><span class="line">	otherwise();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h4><h3 id="命名規則"><a href="#命名規則" class="headerlink" title="命名規則"></a>命名規則</h3><h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>常量全部使用大寫字符表示</p>
+<h4 id="變量"><a href="#變量" class="headerlink" title="變量"></a>變量</h4><p>變量（包括函數參數）一律小寫，單詞之間使用下劃線連接。</p>
+<h3 id="頭文件"><a href="#頭文件" class="headerlink" title="頭文件"></a>頭文件</h3><p>C语言头文件怎么写？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">大致格式：</span><br><span class="line">//防止头文件被多次包含，可以省略，最好有，名字任意，保证唯一即可</span><br><span class="line">#ifndef __ABC_H__</span><br><span class="line">#define __ABC_H__</span><br><span class="line"></span><br><span class="line">//宏定义,可有可无</span><br><span class="line">#define MAX 100</span><br><span class="line">#define MIN 0</span><br><span class="line"></span><br><span class="line">//结构声明,可有可无</span><br><span class="line">typedef struct&#123;</span><br><span class="line">  int a;</span><br><span class="line">&#125;ABC;</span><br><span class="line"></span><br><span class="line">//函数声明,可有可无</span><br><span class="line">void abcfun(int a,int b);</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">c语言头文件的作用？</span><br><span class="line"></span><br><span class="line">1，头文件可以定义所用的函数列表，方便查阅你可以调用的函数；</span><br><span class="line">2，头文件可以定义很多宏定义，就是一些全局静态变量的定义，在这样的情况下，只要修改头文件的内容，程序就可以做相应的修改，不用亲自跑到繁琐的代码内去搜索。</span><br><span class="line">3，头文件只是声明，不占内存空间，要知道其执行过程，要看你头文件所申明的函数是在哪个.c文件里定义的，才知道。</span><br><span class="line">4，他并不是C自带的，可以不用。</span><br><span class="line">5，调用了头文件，就等于赋予了调用某些函数的权限，如果你要算一个数的N次方，就要调用Pow（）函数，而这个函数是定义在math.c里面的，要用这个函数，就必需调用math.h这个头文件。</span><br><span class="line"></span><br><span class="line">C语言头文件中，下划线具体是什么意思？请问有没有高手指点一下？</span><br><span class="line"></span><br><span class="line">下划线没有什何特别的意思,就是一个变量的一部分,就是你定义char str[10],char ____str[10],</span><br><span class="line">他们俩是不同的变量名,然后都是一个字符串变量,一般头文件里或者宏定义都在变量前加一个下划线,这都是习惯问题,以示和普通函数里变量的区别,</span><br><span class="line"></span><br><span class="line">学C的时候老师好像说过，系统自己的变量一般都以下划线开头，以示区分。</span><br><span class="line"></span><br><span class="line">#If define</span><br><span class="line">#ifdef(#ifndef),#else,#endif,#if等都属于预处理条件编译的命令。预处理就是在进行编译的第一遍词法扫描和语法分析之前所作的工作。说白了，就是对源文件进行编译前，先对预处理部分进行处理，然后对处理后的代码进行编译。这样做的好处是，经过处理后的代码，将会变的很精短。</span><br><span class="line"></span><br><span class="line">1、   先来看一下，一个简单的应用，就是在头文件中使用，#ifndef  #define  .....................#endif  这三条指令。头件的中的#ifndef（if not define），这是一个很关键的东西。比如你有两个C文件，这两个C文件都include了同一个头文件。而编译时，这两个C文件要一同编译成一个可运行文件，于是问题来了，大量的声明冲突。</span><br><span class="line">还是把头文件的内容都放在#ifndef和#endif中吧。不管你的头文件会不会被多个文件引用，你都要加上这个。一般格式是这样的：</span><br><span class="line"></span><br><span class="line">#ifndef &lt;标识&gt;</span><br><span class="line">#define &lt;标识&gt;</span><br><span class="line">............</span><br><span class="line">#endif</span><br><span class="line">&lt;标识&gt;在理论上来说可以是自由命名的，但每个头文件的这个“标识”都应该是唯一的。标识的命名规则一般是头文件名全大写，前后加下划线，并把文件名中的“.”也变成下划线，如：delay.h</span><br><span class="line"></span><br><span class="line">#ifndef _DELAY_H_</span><br><span class="line">#define _DELAY_H_</span><br><span class="line">......</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">这一个在一般的小型程序中经常用到，在做单片机的的程序时，经常把一些可以独立的模块写成头文件，方便程序的阅读和移植。</span><br><span class="line"></span><br><span class="line">我看了老长时间的书，终于明白为什么是:</span><br><span class="line">#ifndef _DELAY_H_</span><br><span class="line">#define _DELAY_H_</span><br><span class="line">而不是:</span><br><span class="line">#ifndef DELAY.H</span><br><span class="line">#define DELAY.H</span><br><span class="line">//////////////////////////</span><br><span class="line">因为，后者，定义一个名称，是用于一个程序中或者头文件中的，名称定义</span><br><span class="line">前者，是关于头文件包含的，不是名称定义的。用下划线代替“.”,是没有办法的办法，只有这样才能防止混乱。</span><br><span class="line">前者的意思是，如果没有包含了这个头文件，就包含它。</span><br><span class="line">后者的意思是，如果没有定义这个名称，就定义它。</span><br><span class="line"></span><br><span class="line">其实就是换一种写法 以区分两种意思。</span><br><span class="line">两者是不一样的意思。</span><br><span class="line"></span><br><span class="line">摘自那本两个老外写的经典权威《C程序设计语言（第二版）》 第2章 2.1变量名该节</span><br><span class="line">“……名字是由字母和数字组成的序列，但其第一个字符必须是字母。下划线被看做是字母……由于库例程的名字通常以下划线开头，因此变量名不要以下划线开头……”</span><br><span class="line"></span><br><span class="line">首先是楼主那几个函数是系统文件自代函数,所以一般系统变量或函数名前会加上下划线以示区分.和头文件的下划线是2回事。</span><br><span class="line"></span><br><span class="line">个人总结</span><br><span class="line">模块化箱式设计——函数——函数出现</span><br><span class="line">调用时的作用域问题——被调用的在前，调用的在后</span><br><span class="line">嵌套调用，前面的调用后面的，后面的调用前面的——通过声明扩展作用域——声明出现</span><br><span class="line">声明独立与c文件分离——头文件出现</span><br></pre></td></tr></table></figure>
+
+<h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><h3 id="函數"><a href="#函數" class="headerlink" title="函數"></a>函數</h3><h4 id="函數名稱"><a href="#函數名稱" class="headerlink" title="函數名稱"></a>函數名稱</h4><h4 id="輸入參數"><a href="#輸入參數" class="headerlink" title="輸入參數"></a>輸入參數</h4><h4 id="輸出參數"><a href="#輸出參數" class="headerlink" title="輸出參數"></a>輸出參數</h4><h4 id="返回代碼"><a href="#返回代碼" class="headerlink" title="返回代碼"></a>返回代碼</h4><p>函數返回代碼僅用於返回程序執行結果（成功、失敗），不應用於返回輸出參數。<br>由於函數返回值只能返回「一個」值，當然，你也可以通過返回一個指向結構體指針的方式間接地返回多個值，但是如果碰到需要返回多個結構體的情況呢？所以輸出結果推薦使用參數傳遞。</p>
+<h3 id="附｜編程語言分類"><a href="#附｜編程語言分類" class="headerlink" title="附｜編程語言分類"></a>附｜編程語言分類</h3><p>commonly used features in a side-by-side format</p>
+<p>Scripting Languages  I:        Node.js, PHP, Python, Ruby<br>Scripting Languages II:        Perl, Lua, Groovy<br>GUI Scripting:            JavaScript, Smalltalk, Tcl, AutoHotkey<br>Command Line Interpreters:    POSIX Shell, Cmd.exe, PowerShell<br>Forth and PostScript:        Forth, PostScript<br>Prolog and Erlang:        Prolog, Erlang<br>Lisp Dialects:            Common Lisp, Racket, Clojure, Emacs Lisp</p>
+<p>C and Go:            C, Go<br>OO C Style Languages:        C++, Objective-C, Java, C#<br>Rust, Swift, Scala:        Rust, Swift, Scala<br>TypeScript, Dart, Hack:        TypeScript, Dart, Hack<br>Pascal Style Languages:        Pascal, Ada, PL/pgSQL<br>ML Dialects and Haskell:    SML, OCaml, F#, Haskell</p>
+<p>Numerical Analysis &amp; Statistics:MATLAB, R, NumPy, Julia<br>Computer Algebra Software:    Mathematica, SymPy, GAP, Pari/GP<br>Gnuplot and GLPK:        Gnuplot, GLPK<br>Fortran and APL:        Fortran, APL</p>
+<p>Programming Tools<br>Unix Shells:            Bash, Fish, Ksh, Tcsh, Zsh<br>Text Mode Editors:        Vim, Emacs, Nano<br>Version Control:        Git, Mercurial<br>Build Tools:            Make, Rake, Ant, Sbt<br>Terminal Multiplexers:        Screen, Tmux<br>Relational Databases:        PostgreSQL, MySQL, SQLite<br>Relational Queries:        SQL, Awk, Pig<br>Lightweight Markup:        Markdown, reStructuredText, MediaWiki, AsciiDoc, Org-mode<br>2D Vector Graphics:        PostScript, Processing, SVG</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>文章作者： </strong>硫及銅
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章鏈接：</strong>
+    <a href="https://sulfurandcu.github.io/coding-style.html" title="代碼風格及規範">https://sulfurandcu.github.io/coding-style.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>文章採用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-SA</a> 許可協議　轉載請註明出處
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/mechanical-keyboard.html" rel="prev" title="客製化機械鍵盤">
+      <i class="fa fa-chevron-left"></i> 客製化機械鍵盤
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/stm32-series-startup.html" rel="next" title="STM32系列－啓動過程">
+      STM32系列－啓動過程 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          站點概覽
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#註釋規範"><span class="nav-text">註釋規範</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件註釋－頭文件"><span class="nav-text">文件註釋－頭文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件註釋－源文件"><span class="nav-text">文件註釋－源文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#類型註釋"><span class="nav-text">類型註釋</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#變量註釋"><span class="nav-text">變量註釋</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函數註釋"><span class="nav-text">函數註釋</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本格式"><span class="nav-text">基本格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#製表符-vs-空格"><span class="nav-text">製表符 vs 空格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行長度"><span class="nav-text">行長度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大括號"><span class="nav-text">大括號</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#空格"><span class="nav-text">空格</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名規則"><span class="nav-text">命名規則</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常量"><span class="nav-text">常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#變量"><span class="nav-text">變量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#頭文件"><span class="nav-text">頭文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域"><span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函數"><span class="nav-text">函數</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函數名稱"><span class="nav-text">函數名稱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#輸入參數"><span class="nav-text">輸入參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#輸出參數"><span class="nav-text">輸出參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回代碼"><span class="nav-text">返回代碼</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附｜編程語言分類"><span class="nav-text">附｜編程語言分類</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">硫及銅</p>
+  <div class="site-description" itemprop="description">枸杞養生  亦能續命</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">類別</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SulfurandCu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SulfurandCu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:u.inkyr@gmail.com" title="E-Mail → mailto:u.inkyr@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SulfurandCu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.0.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source Han Serif TC:300,300italic,400,400italic,700,700italic|EB Garamond:300,300italic,400,400italic,700,700italic|Iosevka Term Curly Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"sulfurandcu.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="施工中…不定期更新">
+<meta property="og:type" content="article">
+<meta property="og:title" content="模擬飛行理論篇">
+<meta property="og:url" content="https:&#x2F;&#x2F;sulfurandcu.github.io&#x2F;flight-simulation.html">
+<meta property="og:site_name" content="ㄅㄆㄇㄈ">
+<meta property="og:description" content="施工中…不定期更新">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2020-01-04T11:19:38.298Z">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://sulfurandcu.github.io/flight-simulation.html">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>模擬飛行理論篇 | ㄅㄆㄇㄈ</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <div>
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">ㄅㄆㄇㄈ</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+        <p class="site-subtitle">bopomofo</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+<nav class="site-nav">
+  
+  <ul id="menu" class="menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>在下</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>類別</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-th"></i>標籤</a>
+
+  </li>
+  </ul>
+
+</nav>
+</div>
+    </header>
+
+    
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content">
+            
+
+  <div class="posts-expand">
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://sulfurandcu.github.io/flight-simulation.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="硫及銅">
+      <meta itemprop="description" content="枸杞養生  亦能續命">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="ㄅㄆㄇㄈ">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          模擬飛行理論篇
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2018-12-15 00:00:00" itemprop="dateCreated datePublished" datetime="2018-12-15T00:00:00+08:00">2018-12-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2020-01-04 19:19:38" itemprop="dateModified" datetime="2020-01-04T19:19:38+08:00">2020-01-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分類於</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%81%8A%E6%88%B2%E7%AD%86%E8%A8%98/" itemprop="url" rel="index"><span itemprop="name">遊戲筆記</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>施工中…不定期更新</p>
+<a id="more"></a>
+
+<h3 id="航空氣象"><a href="#航空氣象" class="headerlink" title="航空氣象"></a>航空氣象</h3><h4 id="氣象報文"><a href="#氣象報文" class="headerlink" title="氣象報文"></a>氣象報文</h4><h5 id="機場天氣報告"><a href="#機場天氣報告" class="headerlink" title="機場天氣報告"></a>機場天氣報告</h5><p>機場天氣報告包括例行天氣報告 <strong>METAR</strong> 和特殊天氣報告 <strong>SPECI</strong> 。</p>
+<ul>
+<li><p><strong>例行天氣報告 - <code>METAR</code></strong>：<br>按固定時間間隔在指定地點觀測到的氣象情況的報告。</p>
+</li>
+<li><p><strong>特殊天氣報告 - <code>SPECI</code></strong>：<br>在兩次例行天氣報告之間，當一種或多種氣象要素達到規定標準時發佈的報告。</p>
+</li>
+</ul>
+<p>報文格式：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">METAR ____ ______Z _____G__MPS [___V___] ____ [R__&quot;/____U-N-D]</span><br><span class="line">[+ | -][SH | TS][RA | DZ | BR | FG | HZ] OVC___ [M]__/[M]__ Q____ NOSIG</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">報告種類：METAR | SPECI</span><br><span class="line">機場代碼：____</span><br><span class="line">觀測時間：______Z</span><br><span class="line">風向風速：_____G__MPS [___V___]                 平均風向轉變小於60度。</span><br><span class="line">                                                平均風向轉變大於或者等於180度                  ：使用 VRB 編報風向。</span><br><span class="line">                                                平均風向轉變大於60度小於180度，風速小於兩米每秒：使用 VRB 編報風向。</span><br><span class="line">                                                平均風向轉變大於60度小於180度，風速大於兩米每秒：添加 ___V___ 風向轉變。</span><br><span class="line">能見程度：____ [R__&quot;/____U-N-D]                 能見度小於 2000 米時，加發跑道視程。能見度大於等於 10000 米，無雲，無降水（DZ/RA/SN/SG/IC/PL/GR/GS）、視程障礙（BR/FG/FU/VA/DU/SA/HZ）、其他天氣（PO/SQ/FC/SS/DS）時，使用 CAVOK 編報能見度。</span><br><span class="line">天氣現象：TSRA                                BR輕霧  FG霧  HZ霾  RA雨  DZ毛雨  SH陣性   TS雷性   BC幾陣   MI淺薄   PR部分   VC附近</span><br><span class="line">雲量雲高：SKC___ FEW___ SCT___ BKN___ OVC___    無雲  少雲  疏雲  多雲  滿天雲  CB積雨雲cumulonimbus TCU濃積雲Thick-Cumulus</span><br><span class="line">氣溫露點：__/__</span><br><span class="line">修正海壓：Q____ | A____</span><br><span class="line">過往天氣：[RE__]</span><br><span class="line">風切信息：[WS RWY__ | WS All RWY]</span><br><span class="line">趨勢預測：[NOSIG | BECMG | TEMPO]（未來兩小時內無重要變化｜逐漸變爲｜兩時刻之間）</span><br></pre></td></tr></table></figure>
+
+<h5 id="機場天氣預報"><a href="#機場天氣預報" class="headerlink" title="機場天氣預報"></a>機場天氣預報</h5><h3 id="各种高度"><a href="#各种高度" class="headerlink" title="各种高度"></a>各种高度</h3><p><strong>绝对高度</strong>：飞行器相对于平均海平面/大地水准面的高度。<br><strong>机场标高</strong>：飞机场相对于平均海平面/大地水准面的高度。<br><strong>地点标高</strong>：某地点相对于平均海平面/大地水准面的高度。</p>
+<p><strong>相对高度</strong>：飞行器相对于机场的高度。<br><strong>真实高度</strong>：飞行器相对于当前地面地形的高度。</p>
+<p><strong>标准气压高度-飞行器</strong>：飞行器相对于标准气压平面的高度。<br><strong>标准气压高度-飞机场</strong>：飞机场相对于标准气压平面的高度。</p>
+<p><strong>绝对高度 = 机场标高 + 相对高度 = 地点标高 + 真实高度</strong></p>
+<p>过渡高度层以上使用标准气压高度。<br>过渡高度　以下使用修正海压高度/绝对高度。</p>
+<p><strong>气压式高度计的基准</strong><br>标准气压（QNE）：标准大气条件下海平面的气压（1013.25hPa）。<br>场面气压（QFE）：机场当前气压。<br>修正海压（QNH）：将观测到的场面气压按照标准大气条件修正到平均海平面的气压。</p>
+<h3 id="高度表拨正程序"><a href="#高度表拨正程序" class="headerlink" title="高度表拨正程序"></a>高度表拨正程序</h3><p>飞机起降过程中使用修正海压高度，航线飞行则使用标准气压高度，所以飞机起飞离场、加入航线、脱离航线、进场着陆都需要进行修正海压和标准气压之间的转换。<br><strong>一、规定过渡高度和过渡高度层的机场的拨正程序</strong><br>1、离场航空器在爬升过程中，保持本机场的修正海压高度直到到达过渡高度，在穿越过渡高度或者在过渡高度以下穿越修正海压适用区域的侧向边界时，必须立即将高度表气压刻度拨正到标准气压（1013.25hPa/2992英尺汞柱），其后航空器的垂直位置用飞行高度层表示。<br>2、进场航空器在下降穿越过渡高度层或者在过渡高度以下进入修正海压使用区域的侧向边界时，应立即将高度表气压刻度拨正到本机场的修正海压，其后航空器的垂直位置用绝对高度表示。<br>3、在过渡高度层以上飞越机场的航空器，高度表拨正值使用标准气压。在过渡高度以下飞越机场的航空器，在修正海压适用区域飞行时，高度表拨正值使用修正海压。</p>
+<p><strong>二、未规定过渡高度和过渡高度层的机场的拨正程序</strong><br>1、飞机起飞前，高度表调定为修正海压。<br>2、飞机起飞后，当上升到管制员指令高度或者到达修正海压适用区域的水平边界时，调定其中一个高度表的气压刻度为标准气压，另一个高度表则等到上升到指定的航线飞行高度以后，再调定到标准气压。<br>3、飞机进场前，当下降到管制员指令高度或者到达修正海压适用区域的水平边界时，调定其中一个高度表的气压刻度为修正海压。</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>文章作者： </strong>硫及銅
+  </li>
+  <li class="post-copyright-link">
+    <strong>文章鏈接：</strong>
+    <a href="https://sulfurandcu.github.io/flight-simulation.html" title="模擬飛行理論篇">https://sulfurandcu.github.io/flight-simulation.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版權聲明： </strong>文章採用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-SA</a> 許可協議　轉載請註明出處
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/flight-simulation-standard-procedure.html" rel="prev" title="模擬飛行實踐篇－從零開始學飛行">
+      <i class="fa fa-chevron-left"></i> 模擬飛行實踐篇－從零開始學飛行
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/technique-of-rally.html" rel="next" title="拉力賽駕駛技術">
+      拉力賽駕駛技術 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+  </div>
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          站點概覽
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#航空氣象"><span class="nav-text">航空氣象</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#氣象報文"><span class="nav-text">氣象報文</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#機場天氣報告"><span class="nav-text">機場天氣報告</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#機場天氣預報"><span class="nav-text">機場天氣預報</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#各种高度"><span class="nav-text">各种高度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高度表拨正程序"><span class="nav-text">高度表拨正程序</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">硫及銅</p>
+  <div class="site-description" itemprop="description">枸杞養生  亦能續命</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">類別</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/SulfurandCu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SulfurandCu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:u.inkyr@gmail.com" title="E-Mail → mailto:u.inkyr@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+        <div class="back-to-top motion-element">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2018 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">SulfurandCu</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.0.0
+  </div>
+  <span class="post-meta-divider">|</span>
+  <div class="theme-info">主題 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+<script src="/js/schemes/pisces.js"></script>
+<script src="/js/next-boot.js"></script>
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
