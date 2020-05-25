@@ -13,11 +13,11 @@
 <link rel="stylesheet" href="/css/main.css">
 
 <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Source Han Serif TC:300,300italic,400,400italic,700,700italic|EB Garamond:300,300italic,400,400italic,700,700italic|Iosevka Term Curly Slab:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
-<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
 
 <script id="hexo-configurations">
     var NexT = window.NexT || {};
-    var CONFIG = {"hostname":"sulfurandcu.github.io","root":"/","scheme":"Gemini","version":"7.7.2","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+    var CONFIG = {"hostname":"sulfurandcu.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":true,"scrollpercent":true},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
   <meta name="description" content="我司代碼風格（規範）如下，參考源包括 linux 內核代碼風格和 Google 開源項目風格指南。 在談代碼風格之前先簡單說一下「編碼風格」。這裏以 Keil 的 MDK 集成開發環境爲例，在新建一個頭文件或是源文件時，有兩種常用方式：一是在 Keil MDK 中直接新建一個.h.c文件，修改並存儲；二是在工程目錄下新建一個文本文件，然後重命名爲.h.c文件。衆所周知 Keil MDK 的默認編碼">
@@ -27,7 +27,7 @@
 <meta property="og:site_name" content="ㄅㄆㄇㄈ">
 <meta property="og:description" content="我司代碼風格（規範）如下，參考源包括 linux 內核代碼風格和 Google 開源項目風格指南。 在談代碼風格之前先簡單說一下「編碼風格」。這裏以 Keil 的 MDK 集成開發環境爲例，在新建一個頭文件或是源文件時，有兩種常用方式：一是在 Keil MDK 中直接新建一個.h.c文件，修改並存儲；二是在工程目錄下新建一個文本文件，然後重命名爲.h.c文件。衆所周知 Keil MDK 的默認編碼">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-03-19T14:57:48.775Z">
+<meta property="og:updated_time" content="2020-05-25T11:24:53.417Z">
 <meta name="twitter:card" content="summary">
 
 <link rel="canonical" href="https://sulfurandcu.github.io/coding-style.html">
@@ -92,14 +92,12 @@
 
   <div class="site-meta">
 
-    <div>
-      <a href="/" class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">ㄅㄆㄇㄈ</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-        <p class="site-subtitle">bopomofo</p>
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">ㄅㄆㄇㄈ</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">bopomofo</p>
   </div>
 
   <div class="site-nav-right">
@@ -109,37 +107,41 @@
 </div>
 
 
+
+
 <nav class="site-nav">
-  
-  <ul id="menu" class="menu">
+  <ul id="menu" class="main-menu menu">
         <li class="menu-item menu-item-home">
 
-    <a href="/" rel="section"><i class="fa fa-fw fa-home"></i>首頁</a>
+    <a href="/" rel="section"><i class="home fa-fw"></i>首頁</a>
 
   </li>
         <li class="menu-item menu-item-about">
 
-    <a href="/about/" rel="section"><i class="fa fa-fw fa-user"></i>在下</a>
+    <a href="/about/" rel="section"><i class="user fa-fw"></i>在下</a>
 
   </li>
         <li class="menu-item menu-item-archives">
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章</a>
+    <a href="/archives/" rel="section"><i class="archive fa-fw"></i>文章</a>
 
   </li>
         <li class="menu-item menu-item-categories">
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>類別</a>
+    <a href="/categories/" rel="section"><i class="th fa-fw"></i>類別</a>
 
   </li>
         <li class="menu-item menu-item-tags">
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-th"></i>標籤</a>
+    <a href="/tags/" rel="section"><i class="th fa-fw"></i>標籤</a>
 
   </li>
   </ul>
-
 </nav>
+
+
+
+
 </div>
     </header>
 
@@ -151,14 +153,13 @@
         <div class="content-wrap">
           
 
-          <div class="content">
+          <div class="content post posts-expand">
             
 
-  <div class="posts-expand">
-      
+    
   
   
-  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-CN">
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://sulfurandcu.github.io/coding-style.html">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -178,7 +179,7 @@
         <div class="post-meta">
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
+                <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">發表於</span>
 
@@ -186,14 +187,14 @@
             </span>
               <span class="post-meta-item">
                 <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
+                  <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2020-03-19 22:57:48" itemprop="dateModified" datetime="2020-03-19T22:57:48+08:00">2020-03-19</time>
+                <time title="修改時間：2020-05-25 19:24:53" itemprop="dateModified" datetime="2020-05-25T19:24:53+08:00">2020-05-25</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
+                <i class="far fa-folder"></i>
               </span>
               <span class="post-meta-item-text">分類於</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -213,7 +214,7 @@
 
       
         <p>我司代碼風格（規範）如下，參考源包括 linux 內核代碼風格和 Google 開源項目風格指南。</p>
-<p>在談代碼風格之前先簡單說一下「編碼風格」。這裏以 Keil 的 MDK 集成開發環境爲例，在新建一個頭文件或是源文件時，有兩種常用方式：一是在 Keil MDK 中直接新建一個.h.c文件，修改並存儲；二是在工程目錄下新建一個文本文件，然後重命名爲.h.c文件。衆所周知 Keil MDK 的默認編碼格式是 ANSI 格式。在 Windows 10 版本 1903 發佈之前，操作系統自帶的記事本使用的也是 ANSI 格式。直到版本 1903 微軟才將記事本的默認編碼格式改爲 UTF-8 格式。顯然，如果不是特意設置的話，兩種方式建立的文件的編碼格式大概率是 ANSI 格式。而 Keil MDK 中的 ANSI 格式對中文輸入極不友好，中文輸入時敲擊退格鍵會出現問號（必須敲擊兩次退格才能刪除一個漢字），因此這裏建議工程中所有源碼文件的編碼格式統一使用 UTF-8 格式。</p>
+<p>在談代碼風格之前先簡單說一下「編碼風格」。這裏以 Keil 的 MDK 集成開發環境爲例，在新建一個頭文件或是源文件時，有兩種常用方式：一是在 Keil MDK 中直接新建一個.h.c文件，修改並存儲；二是在工程目錄下新建一個文本文件，然後重命名爲.h.c文件。衆所周知 Keil MDK 的默認編碼格式是 ANSI 格式。在 Windows 10 版本 1903 發佈之前，操作系統自帶的記事本使用的也是 ANSI 格式。直到版本 1903 微軟纔將記事本的默認編碼格式改爲 UTF-8 格式。顯然，如果不是特意設置的話，兩種方式建立的文件的編碼格式大概率是 ANSI 格式。而 Keil MDK 中的 ANSI 格式對中文輸入極不友好，中文輸入時敲擊退格鍵會出現問號（必須敲擊兩次退格才能刪除一個漢字），因此這裏建議工程中所有源碼文件的編碼格式統一使用 UTF-8 格式。</p>
 <p>施工中…不定期更新</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
@@ -221,7 +222,7 @@
 
 <h3 id="註釋規範"><a href="#註釋規範" class="headerlink" title="註釋規範"></a>註釋規範</h3><p>註釋風格要保持統一。註釋建議使用中文，除非能夠非常準確地用英文表述。</p>
 <p>註釋包括「註釋說明（名詞）」和「註釋代碼（動詞）」。<br>註釋說明（名詞）包括文件註釋，類型註釋、類註釋、成員註釋，變量註釋，函數註釋，語句註釋。語句註釋又可分爲「行代碼註釋」和「段代碼註釋」。<br>註釋代碼（動詞）包括註釋單行代碼，註釋多行代碼，註釋整段代碼。</p>
-<p>使用<code>/*  */</code>註釋「註釋說明」，使用<code>//</code>註釋單行代碼和多行代碼（使用快捷鍵快速註釋以及反向註釋），使用<code>#if 0</code>註釋掉整段代碼。禁止使用<code>/*  */</code>註釋多行代碼或者整段代碼。</p>
+<p>使用<code>/*  */</code>註釋「註釋說明」，使用<code>//</code>註釋單行代碼和多行代碼（使用快捷鍵快速註釋以及取消註釋），使用<code>#if 0</code>註釋掉整段代碼。禁止使用<code>/*  */</code>註釋多行代碼或者整段代碼。</p>
 <p>使用快捷鍵註釋的優點：絕大部分IDE的快捷鍵註釋是將<code>//</code>加在各行行首，這樣當製表符尺寸大於 2 時是不會影響代碼美觀性的。並且<code>//</code>不會現註釋嵌套的問題。</p>
 <h4 id="文件註釋－頭文件"><a href="#文件註釋－頭文件" class="headerlink" title="文件註釋－頭文件"></a>文件註釋－頭文件</h4><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">大陸簡體</span><br><span class="line">/**</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * copyright © 2020 sulfurandcu. all rights reserved.</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * 文件名称 :  main.h</span><br><span class="line"> * 当前版本 :  1.0</span><br><span class="line"> * 建立日期 :  2020-01-01</span><br><span class="line"> * 作    者 :  sulfurandcu : u.inkyr@gmail.com</span><br><span class="line"> * 修改记录 :</span><br><span class="line"> *             版本      日期          作者                说明</span><br><span class="line"> *             ####      ####          ####                ####</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * 简要说明 :  在这里说明该文件的依赖关系。</span><br><span class="line"> *</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> */</span><br><span class="line"></span><br><span class="line">臺灣正體</span><br><span class="line">/**</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * copyright © 2020 sulfurandcu. all rights reserved.</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * 文件名稱 :  main.h</span><br><span class="line"> * 當前版本 :  1.0</span><br><span class="line"> * 建立日期 :  2020-01-01</span><br><span class="line"> * 作    者 :  sulfurandcu : u.inkyr@gmail.com</span><br><span class="line"> * 修改記錄 :</span><br><span class="line"> *             版本      日期          作者                說明</span><br><span class="line"> *             ####      ####          ####                ####</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> * 簡要說明 :  在這裏說明該文件的依賴關係。</span><br><span class="line"> *</span><br><span class="line"> *******************************************************************************</span><br><span class="line"> */</span><br></pre></td></tr></table></figure>
 
@@ -237,9 +238,9 @@
 <p><strong>說明</strong></p>
 <p>關於製表符和空格的聖戰由來已久，具體起源於何時已不可考，但是我爺爺的爺爺曾經告訴我：上古時期，因華夏、東夷兩大集團對縮進方式無法達成一致，華夏集團遂派有熊氏黃帝與神農氏炎帝向九黎族的蚩尤發起征討，兩大集團交戰於涿鹿之野，這就是著名的涿鹿之戰，而蚩尤便是那個使用製表符對齊的異端。從那以後，炎黃子孫們便世世代代恪守「製表符僅用於縮進，空格僅用於對齊」的祖訓。<br>這種方式可以兼顧多種縮進風格。並且在提交代碼時，能夠很容易地將使用製表符縮進的代碼轉換成使用空格縮進的代碼。不過需要注意的是，將製表符轉換成空格是可控、可預期的，反之則不然。使用空格來縮進或對齊是可以容忍的，而使用製表符來對齊則是無法容忍的。倘若您非要將製表符用來對齊，那麼我們建議您找伊拉克和大敘利亞伊斯蘭國人民聊一聊。</p>
 <p><strong>例子</strong></p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void main(void)</span><br><span class="line">&#123;</span><br><span class="line">	while(1)&#123;</span><br><span class="line">		function_1();</span><br><span class="line">		function_2_is_vely_vely_important();</span><br><span class="line">		...</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void really_really_really_long_function_name(type long_para_name_1,</span><br><span class="line">                                             type long_para_name_2,</span><br><span class="line">                                             type long_para_name_3)</span><br><span class="line">&#123;</span><br><span class="line">	do_something;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">return_type really_really_really_long_function_name(type par_name_1,</span><br><span class="line">                                                    type par_name_2,</span><br><span class="line">                                                    type par_name_3)&#123;</span><br><span class="line">	do_something;</span><br><span class="line">	return xxx;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">void main(void)</span><br><span class="line">&#123;</span><br><span class="line">	while(1) &#123;</span><br><span class="line">		function_1();</span><br><span class="line">		really_really_really_long_function_name(long_para_name_1,</span><br><span class="line">		                                        long_para_name_2,</span><br><span class="line">		                                        long_para_name_3);</span><br><span class="line">		...</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="行長度"><a href="#行長度" class="headerlink" title="行長度"></a>行長度</h4><p><strong>總述</strong></p>
 <p>每一行的代碼長度限制爲 <strong>80</strong> 個字符。</p>
@@ -266,15 +267,10 @@
 
 <h4 id="空格"><a href="#空格" class="headerlink" title="空格"></a>空格</h4><h3 id="命名規則"><a href="#命名規則" class="headerlink" title="命名規則"></a>命名規則</h3><h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>常量全部使用大寫字符表示</p>
 <h4 id="變量"><a href="#變量" class="headerlink" title="變量"></a>變量</h4><p>變量（包括函數參數）一律小寫，單詞之間使用下劃線連接。</p>
-<h3 id="頭文件"><a href="#頭文件" class="headerlink" title="頭文件"></a>頭文件</h3><p>C语言头文件怎么写？</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">大致格式：</span><br><span class="line">//防止头文件被多次包含，可以省略，最好有，名字任意，保证唯一即可</span><br><span class="line">#ifndef __ABC_H__</span><br><span class="line">#define __ABC_H__</span><br><span class="line"></span><br><span class="line">//宏定义,可有可无</span><br><span class="line">#define MAX 100</span><br><span class="line">#define MIN 0</span><br><span class="line"></span><br><span class="line">//结构声明,可有可无</span><br><span class="line">typedef struct&#123;</span><br><span class="line">  int a;</span><br><span class="line">&#125;ABC;</span><br><span class="line"></span><br><span class="line">//函数声明,可有可无</span><br><span class="line">void abcfun(int a,int b);</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">c语言头文件的作用？</span><br><span class="line"></span><br><span class="line">1，头文件可以定义所用的函数列表，方便查阅你可以调用的函数；</span><br><span class="line">2，头文件可以定义很多宏定义，就是一些全局静态变量的定义，在这样的情况下，只要修改头文件的内容，程序就可以做相应的修改，不用亲自跑到繁琐的代码内去搜索。</span><br><span class="line">3，头文件只是声明，不占内存空间，要知道其执行过程，要看你头文件所申明的函数是在哪个.c文件里定义的，才知道。</span><br><span class="line">4，他并不是C自带的，可以不用。</span><br><span class="line">5，调用了头文件，就等于赋予了调用某些函数的权限，如果你要算一个数的N次方，就要调用Pow（）函数，而这个函数是定义在math.c里面的，要用这个函数，就必需调用math.h这个头文件。</span><br><span class="line"></span><br><span class="line">C语言头文件中，下划线具体是什么意思？请问有没有高手指点一下？</span><br><span class="line"></span><br><span class="line">下划线没有什何特别的意思,就是一个变量的一部分,就是你定义char str[10],char ____str[10],</span><br><span class="line">他们俩是不同的变量名,然后都是一个字符串变量,一般头文件里或者宏定义都在变量前加一个下划线,这都是习惯问题,以示和普通函数里变量的区别,</span><br><span class="line"></span><br><span class="line">学C的时候老师好像说过，系统自己的变量一般都以下划线开头，以示区分。</span><br><span class="line"></span><br><span class="line">#If define</span><br><span class="line">#ifdef(#ifndef),#else,#endif,#if等都属于预处理条件编译的命令。预处理就是在进行编译的第一遍词法扫描和语法分析之前所作的工作。说白了，就是对源文件进行编译前，先对预处理部分进行处理，然后对处理后的代码进行编译。这样做的好处是，经过处理后的代码，将会变的很精短。</span><br><span class="line"></span><br><span class="line">1、   先来看一下，一个简单的应用，就是在头文件中使用，#ifndef  #define  .....................#endif  这三条指令。头件的中的#ifndef（if not define），这是一个很关键的东西。比如你有两个C文件，这两个C文件都include了同一个头文件。而编译时，这两个C文件要一同编译成一个可运行文件，于是问题来了，大量的声明冲突。</span><br><span class="line">还是把头文件的内容都放在#ifndef和#endif中吧。不管你的头文件会不会被多个文件引用，你都要加上这个。一般格式是这样的：</span><br><span class="line"></span><br><span class="line">#ifndef &lt;标识&gt;</span><br><span class="line">#define &lt;标识&gt;</span><br><span class="line">............</span><br><span class="line">#endif</span><br><span class="line">&lt;标识&gt;在理论上来说可以是自由命名的，但每个头文件的这个“标识”都应该是唯一的。标识的命名规则一般是头文件名全大写，前后加下划线，并把文件名中的“.”也变成下划线，如：delay.h</span><br><span class="line"></span><br><span class="line">#ifndef _DELAY_H_</span><br><span class="line">#define _DELAY_H_</span><br><span class="line">......</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">这一个在一般的小型程序中经常用到，在做单片机的的程序时，经常把一些可以独立的模块写成头文件，方便程序的阅读和移植。</span><br><span class="line"></span><br><span class="line">我看了老长时间的书，终于明白为什么是:</span><br><span class="line">#ifndef _DELAY_H_</span><br><span class="line">#define _DELAY_H_</span><br><span class="line">而不是:</span><br><span class="line">#ifndef DELAY.H</span><br><span class="line">#define DELAY.H</span><br><span class="line">//////////////////////////</span><br><span class="line">因为，后者，定义一个名称，是用于一个程序中或者头文件中的，名称定义</span><br><span class="line">前者，是关于头文件包含的，不是名称定义的。用下划线代替“.”,是没有办法的办法，只有这样才能防止混乱。</span><br><span class="line">前者的意思是，如果没有包含了这个头文件，就包含它。</span><br><span class="line">后者的意思是，如果没有定义这个名称，就定义它。</span><br><span class="line"></span><br><span class="line">其实就是换一种写法 以区分两种意思。</span><br><span class="line">两者是不一样的意思。</span><br><span class="line"></span><br><span class="line">摘自那本两个老外写的经典权威《C程序设计语言（第二版）》 第2章 2.1变量名该节</span><br><span class="line">“……名字是由字母和数字组成的序列，但其第一个字符必须是字母。下划线被看做是字母……由于库例程的名字通常以下划线开头，因此变量名不要以下划线开头……”</span><br><span class="line"></span><br><span class="line">首先是楼主那几个函数是系统文件自代函数,所以一般系统变量或函数名前会加上下划线以示区分.和头文件的下划线是2回事。</span><br><span class="line"></span><br><span class="line">个人总结</span><br><span class="line">模块化箱式设计——函数——函数出现</span><br><span class="line">调用时的作用域问题——被调用的在前，调用的在后</span><br><span class="line">嵌套调用，前面的调用后面的，后面的调用前面的——通过声明扩展作用域——声明出现</span><br><span class="line">声明独立与c文件分离——头文件出现</span><br></pre></td></tr></table></figure>
+<h3 id="頭文件"><a href="#頭文件" class="headerlink" title="頭文件"></a>頭文件</h3><p>C語言頭文件怎麼寫？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">大致格式：</span><br><span class="line">//防止頭文件被多次包含，可以省略，最好有，名字任意，保證唯一即可</span><br><span class="line">#ifndef __ABC_H__</span><br><span class="line">#define __ABC_H__</span><br><span class="line"></span><br><span class="line">//宏定義,可有可無</span><br><span class="line">#define MAX 100</span><br><span class="line">#define MIN 0</span><br><span class="line"></span><br><span class="line">//結構聲明,可有可無</span><br><span class="line">typedef struct&#123;</span><br><span class="line">  int a;</span><br><span class="line">&#125;ABC;</span><br><span class="line"></span><br><span class="line">//函數聲明,可有可無</span><br><span class="line">void abcfun(int a,int b);</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">c語言頭文件的作用？</span><br><span class="line"></span><br><span class="line">1，頭文件可以定義所用的函數列表，方便查閱你可以調用的函數；</span><br><span class="line">2，頭文件可以定義很多宏定義，就是一些全局靜態變量的定義，在這樣的情況下，只要修改頭文件的內容，程序就可以做相應的修改，不用親自跑到繁瑣的代碼內去搜索。</span><br><span class="line">3，頭文件只是聲明，不佔內存空間，要知道其執行過程，要看你頭文件所申明的函數是在哪個.c文件裏定義的，才知道。</span><br><span class="line">4，他並不是C自帶的，可以不用。</span><br><span class="line">5，調用了頭文件，就等於賦予了調用某些函數的權限，如果你要算一個數的N次方，就要調用Pow（）函數，而這個函數是定義在math.c裏面的，要用這個函數，就必需調用math.h這個頭文件。</span><br><span class="line"></span><br><span class="line">C語言頭文件中，下劃線具體是什麼意思？請問有沒有高手指點一下？</span><br><span class="line"></span><br><span class="line">下劃線沒有什何特別的意思,就是一個變量的一部分,就是你定義char str[10],char ____str[10],</span><br><span class="line">他們倆是不同的變量名,然後都是一個字符串變量,一般頭文件裏或者宏定義都在變量前加一個下劃線,這都是習慣問題,以示和普通函數裏變量的區別,</span><br><span class="line"></span><br><span class="line">學C的時候老師好像說過，系統自己的變量一般都以下劃線開頭，以示區分。</span><br><span class="line"></span><br><span class="line">#If define</span><br><span class="line">#ifdef(#ifndef),#else,#endif,#if等都屬於預處理條件編譯的命令。預處理就是在進行編譯的第一遍詞法掃描和語法分析之前所作的工作。說白了，就是對源文件進行編譯前，先對預處理部分進行處理，然後對處理後的代碼進行編譯。這樣做的好處是，經過處理後的代碼，將會變的很精短。</span><br><span class="line"></span><br><span class="line">1、   先來看一下，一個簡單的應用，就是在頭文件中使用，#ifndef  #define  .....................#endif  這三條指令。頭件的中的#ifndef（if not define），這是一個很關鍵的東西。比如你有兩個C文件，這兩個C文件都include了同一個頭文件。而編譯時，這兩個C文件要一同編譯成一個可運行文件，於是問題來了，大量的聲明衝突。</span><br><span class="line">還是把頭文件的內容都放在#ifndef和#endif中吧。不管你的頭文件會不會被多個文件引用，你都要加上這個。一般格式是這樣的：</span><br><span class="line"></span><br><span class="line">#ifndef &lt;標識&gt;</span><br><span class="line">#define &lt;標識&gt;</span><br><span class="line">............</span><br><span class="line">#endif</span><br><span class="line">&lt;標識&gt;在理論上來說可以是自由命名的，但每個頭文件的這個“標識”都應該是唯一的。標識的命名規則一般是頭文件名全大寫，前後加下劃線，並把文件名中的“.”也變成下劃線，如：delay.h</span><br><span class="line"></span><br><span class="line">#ifndef _DELAY_H_</span><br><span class="line">#define _DELAY_H_</span><br><span class="line">......</span><br><span class="line">#endif</span><br><span class="line"></span><br><span class="line">這一個在一般的小型程序中經常用到，在做單片機的的程序時，經常把一些可以獨立的模塊寫成頭文件，方便程序的閱讀和移植。</span><br><span class="line"></span><br><span class="line">我看了老長時間的書，終於明白爲什麼是:</span><br><span class="line">#ifndef _DELAY_H_</span><br><span class="line">#define _DELAY_H_</span><br><span class="line">而不是:</span><br><span class="line">#ifndef DELAY.H</span><br><span class="line">#define DELAY.H</span><br><span class="line">//////////////////////////</span><br><span class="line">因爲，後者，定義一個名稱，是用於一個程序中或者頭文件中的，名稱定義</span><br><span class="line">前者，是關於頭文件包含的，不是名稱定義的。用下劃線代替“.”,是沒有辦法的辦法，只有這樣才能防止混亂。</span><br><span class="line">前者的意思是，如果沒有包含了這個頭文件，就包含它。</span><br><span class="line">後者的意思是，如果沒有定義這個名稱，就定義它。</span><br><span class="line"></span><br><span class="line">其實就是換一種寫法 以區分兩種意思。</span><br><span class="line">兩者是不一樣的意思。</span><br><span class="line"></span><br><span class="line">摘自那本兩個老外寫的經典權威《C程序設計語言（第二版）》 第2章 2.1變量名該節</span><br><span class="line">“……名字是由字母和數字組成的序列，但其第一個字符必須是字母。下劃線被看做是字母……由於庫例程的名字通常以下劃線開頭，因此變量名不要以下劃線開頭……”</span><br><span class="line"></span><br><span class="line">首先是樓主那幾個函數是系統文件自代函數,所以一般系統變量或函數名前會加上下劃線以示區分.和頭文件的下劃線是2回事。</span><br><span class="line"></span><br><span class="line">個人總結</span><br><span class="line">模塊化箱式設計——函數——函數出現</span><br><span class="line">調用時的作用域問題——被調用的在前，調用的在後</span><br><span class="line">嵌套調用，前面的調用後面的，後面的調用前面的——通過聲明擴展作用域——聲明出現</span><br><span class="line">聲明獨立與c文件分離——頭文件出現</span><br></pre></td></tr></table></figure>
 
 <h3 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h3><h3 id="函數"><a href="#函數" class="headerlink" title="函數"></a>函數</h3><h4 id="函數名稱"><a href="#函數名稱" class="headerlink" title="函數名稱"></a>函數名稱</h4><h4 id="輸入參數"><a href="#輸入參數" class="headerlink" title="輸入參數"></a>輸入參數</h4><h4 id="輸出參數"><a href="#輸出參數" class="headerlink" title="輸出參數"></a>輸出參數</h4><h4 id="返回代碼"><a href="#返回代碼" class="headerlink" title="返回代碼"></a>返回代碼</h4><p>函數返回代碼僅用於返回程序執行結果（成功、失敗），不應用於返回輸出參數。<br>由於函數返回值只能返回「一個」值，當然，你也可以通過返回一個指向結構體指針的方式間接地返回多個值，但是如果碰到需要返回多個結構體的情況呢？所以輸出結果推薦使用參數傳遞。</p>
-<h3 id="附｜編程語言分類"><a href="#附｜編程語言分類" class="headerlink" title="附｜編程語言分類"></a>附｜編程語言分類</h3><p>commonly used features in a side-by-side format</p>
-<p>Scripting Languages  I:        Node.js, PHP, Python, Ruby<br>Scripting Languages II:        Perl, Lua, Groovy<br>GUI Scripting:            JavaScript, Smalltalk, Tcl, AutoHotkey<br>Command Line Interpreters:    POSIX Shell, Cmd.exe, PowerShell<br>Forth and PostScript:        Forth, PostScript<br>Prolog and Erlang:        Prolog, Erlang<br>Lisp Dialects:            Common Lisp, Racket, Clojure, Emacs Lisp</p>
-<p>C and Go:            C, Go<br>OO C Style Languages:        C++, Objective-C, Java, C#<br>Rust, Swift, Scala:        Rust, Swift, Scala<br>TypeScript, Dart, Hack:        TypeScript, Dart, Hack<br>Pascal Style Languages:        Pascal, Ada, PL/pgSQL<br>ML Dialects and Haskell:    SML, OCaml, F#, Haskell</p>
-<p>Numerical Analysis &amp; Statistics:MATLAB, R, NumPy, Julia<br>Computer Algebra Software:    Mathematica, SymPy, GAP, Pari/GP<br>Gnuplot and GLPK:        Gnuplot, GLPK<br>Fortran and APL:        Fortran, APL</p>
-<p>Programming Tools<br>Unix Shells:            Bash, Fish, Ksh, Tcsh, Zsh<br>Text Mode Editors:        Vim, Emacs, Nano<br>Version Control:        Git, Mercurial<br>Build Tools:            Make, Rake, Ant, Sbt<br>Terminal Multiplexers:        Screen, Tmux<br>Relational Databases:        PostgreSQL, MySQL, SQLite<br>Relational Queries:        SQL, Awk, Pig<br>Lightweight Markup:        Markdown, reStructuredText, MediaWiki, AsciiDoc, Org-mode<br>2D Vector Graphics:        PostScript, Processing, SVG</p>
 
     </div>
 
@@ -293,7 +289,7 @@
     <a href="https://sulfurandcu.github.io/coding-style.html" title="代碼風格及規範">https://sulfurandcu.github.io/coding-style.html</a>
   </li>
   <li class="post-copyright-license">
-    <strong>版權聲明： </strong>文章採用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-SA</a> 許可協議　轉載請註明出處
+    <strong>版權聲明： </strong>文章採用 <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-SA</a> 許可協議　轉載請註明出處
   </li>
 </ul>
 </div>
@@ -310,10 +306,7 @@
     <a href="/mechanical-keyboard.html" rel="prev" title="客製化機械鍵盤">
       <i class="fa fa-chevron-left"></i> 客製化機械鍵盤
     </a></div>
-      <div class="post-nav-item">
-    <a href="/stm32-series-startup.html" rel="next" title="STM32系列－啓動過程">
-      STM32系列－啓動過程 <i class="fa fa-chevron-right"></i>
-    </a></div>
+      <div class="post-nav-item"></div>
     </div>
       </footer>
     
@@ -322,7 +315,6 @@
   
   
 
-  </div>
 
 
           </div>
@@ -373,7 +365,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#註釋規範"><span class="nav-text">註釋規範</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件註釋－頭文件"><span class="nav-text">文件註釋－頭文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件註釋－源文件"><span class="nav-text">文件註釋－源文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#類型註釋"><span class="nav-text">類型註釋</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#變量註釋"><span class="nav-text">變量註釋</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函數註釋"><span class="nav-text">函數註釋</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本格式"><span class="nav-text">基本格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#製表符-vs-空格"><span class="nav-text">製表符 vs 空格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行長度"><span class="nav-text">行長度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大括號"><span class="nav-text">大括號</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#空格"><span class="nav-text">空格</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名規則"><span class="nav-text">命名規則</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常量"><span class="nav-text">常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#變量"><span class="nav-text">變量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#頭文件"><span class="nav-text">頭文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域"><span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函數"><span class="nav-text">函數</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函數名稱"><span class="nav-text">函數名稱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#輸入參數"><span class="nav-text">輸入參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#輸出參數"><span class="nav-text">輸出參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回代碼"><span class="nav-text">返回代碼</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#附｜編程語言分類"><span class="nav-text">附｜編程語言分類</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#註釋規範"><span class="nav-text">註釋規範</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#文件註釋－頭文件"><span class="nav-text">文件註釋－頭文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#文件註釋－源文件"><span class="nav-text">文件註釋－源文件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#類型註釋"><span class="nav-text">類型註釋</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#變量註釋"><span class="nav-text">變量註釋</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#函數註釋"><span class="nav-text">函數註釋</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#基本格式"><span class="nav-text">基本格式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#製表符-vs-空格"><span class="nav-text">製表符 vs 空格</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#行長度"><span class="nav-text">行長度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#大括號"><span class="nav-text">大括號</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#空格"><span class="nav-text">空格</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#命名規則"><span class="nav-text">命名規則</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#常量"><span class="nav-text">常量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#變量"><span class="nav-text">變量</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#頭文件"><span class="nav-text">頭文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#作用域"><span class="nav-text">作用域</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#函數"><span class="nav-text">函數</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#函數名稱"><span class="nav-text">函數名稱</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#輸入參數"><span class="nav-text">輸入參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#輸出參數"><span class="nav-text">輸出參數</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回代碼"><span class="nav-text">返回代碼</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -387,24 +379,24 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-count">4</span>
         <span class="site-state-item-name">類別</span></a>
       </div>
   </nav>
 </div>
   <div class="links-of-author motion-element">
       <span class="links-of-author-item">
-        <a href="https://github.com/SulfurandCu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SulfurandCu" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i></a>
+        <a href="https://github.com/SulfurandCu" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;SulfurandCu" rel="noopener" target="_blank"><i class="github fa-fw"></i></a>
       </span>
       <span class="links-of-author-item">
-        <a href="mailto:u.inkyr@gmail.com" title="E-Mail → mailto:u.inkyr@gmail.com" rel="noopener" target="_blank"><i class="fa fa-fw fa-envelope"></i></a>
+        <a href="mailto:u.inkyr@gmail.com" title="E-Mail → mailto:u.inkyr@gmail.com" rel="noopener" target="_blank"><i class="envelope fa-fw"></i></a>
       </span>
   </div>
   <div class="cc-license motion-element" itemprop="license">
@@ -438,14 +430,11 @@
   &copy; 2018 – 
   <span itemprop="copyrightYear">2020</span>
   <span class="with-love">
-    <i class="fa fa-user"></i>
+    <i class="user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">SulfurandCu</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> 強力驅動 v4.0.0
-  </div>
-  <span class="post-meta-divider">|</span>
-  <div class="theme-info">主題 – <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.7.2
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 強力驅動
   </div>
 
         
